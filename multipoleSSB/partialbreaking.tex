@@ -1,0 +1,50 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=1in]{geometry} 
+\usepackage{mathtools}
+\usepackage{xcolor}
+
+\newcommand{\note}[1]{\textcolor{red}{#1}}
+\newcommand{\ex}[1]{\left\langle#1\right\rangle}
+\newcommand{\nn}{\nonumber\\}
+\renewcommand{\th}[1]{\frac{1}{#1}}
+\newcommand{\half}{\th{2}}
+\newcommand{\IR}{\text{IR}}
+\renewcommand{\l}{\ell}
+\newcommand{\cl}{\text{cl}}
+\newcommand{\q}{\text{q}}
+\renewcommand{\max}{\text{max}}
+\newcommand{\goesto}{\rightarrow}
+
+\title{Breaking monopole symmetry to dipole symmetry}
+\author{charlie}
+\date{October 2021}
+
+\begin{document}
+
+\maketitle
+
+\section{Fields}
+
+We have a field $\phi$ that transforms into $\phi + a^\mu x_\mu + b$ under a dipole symmetry. If $\phi$ is well-defined and constant, then the symmetry is fully broken. We only want to consider fields with constant values. How can we define a field that breaks the symmetry group to the monopole group? It must change under the $a^\mu$ part of the transformation, but somehow be rotationally invariant.
+
+It is tempting to use a field like $\partial_\mu \phi$. The problem then is that if $\partial_\mu \phi$ is well-defined, then $\phi$ must be as well. Alternatively, it is tempting to use a vector-valued field $\theta_\mu$, but this will necessarily break rotation symmetry. Something like $\theta_\mu \theta^\mu$ would be rotationally invariant, but the ground state would still have to choose a value of $\theta_\mu$. 
+
+Maybe it would help to look at the group structure. The group $\mathcal{M}^2_\max$ has a space subgroup, a dipole subgroup $U(1)^d$, and a monopole subgroup $U(1)$. The space subgroup and the monopole subgroup combine to form $\mathcal{M}^1_\max$, but the dipole and space subgroups cannot combine without including the monopole subgroup. This should not be a problem though, as $\mathcal{M}^1_\max$ is a perfectly valid subgroup.
+
+If we don't want to break rotational invariance, our order parameter needs to be a scalar\dots
+
+\section{On the lattice}
+
+Ignoring the question of whether we can do this in the continuum, can we partially break the symmetry on the lattice? The system
+\begin{align}
+H_0  &= H_b + H_d + H_\text{int}\nn
+H_b &= \sum_j \left[ A  n_j + B n_j^2 \right] \nn
+&\qquad + \sum_{j,\mu,\nu} C \left[  b_j b^{\dag}_{j+\mu} b^{\dag}_{j+\nu} b_{j+\mu+\nu} + H.C. \right]\nn
+H_d &= \sum_{j,\mu} \left[ A' n'_{j,j+\mu} + B' (n'_{j, j + \mu})^2 \right]\nn
+&\qquad  + \sum_{j,\mu,\nu} C' \left[d^{\dag}_{j, j + \mu} d_{j + \nu, j+\mu + \nu} +H.C.\right]\nn
+H_\text{int} &= \sum_{j,\mu} g\left[ b_j d_{j,j+\mu} b^\dag_{j+\mu} + H.C. \right],
+\end{align}
+\emph{almost} manages to break dipole without breaking rotations. Say that in the dipole condensate we have $d_1=e^{i\phi_1}$, $d_2=e^{i\phi_2}$, and $d_3=e^{i\phi_3}$. 
+
+\end{document}

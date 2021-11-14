@@ -1,0 +1,105 @@
+\documentclass[12pt]{article}
+\usepackage[margin=1in]{geometry} 
+\usepackage{mathtools}
+\usepackage{xcolor}
+\usepackage{hyperref}
+
+\newcommand{\note}[1]{\textcolor{red}{#1}}
+\newcommand{\nn}{\nonumber\\}
+\newcommand{\goesto}{\rightarrow}
+\renewcommand{\int}{\text{int}}
+\newcommand{\ex}[1]{\left\langle#1\right\rangle}
+\newcommand{\op}[1]{\mathcal{O}^{(#1)}}
+
+\title{Quantum rotors with multipole symmetry}
+\author{charlie}
+\date{August 2021}
+
+\begin{document}
+
+\maketitle
+
+\section{In 1 dimension}
+
+Let's start with the simpler case of 1d, so that there is only one type of link. Obviously CMW theorems and Imre-Ma stuff need more dimensions, but 1d is simple.
+
+On sites, we have degrees of freedom with states $|\theta\rangle$, $0\le \theta<2\pi$. The operators are $\theta$ and $L = -i\frac{\partial}{\partial\theta}$. On links, let the operators be $\phi$ and $J = -i\frac{\partial}{\partial\phi}$. One symmetry operator is 
+\begin{align}
+\mathcal{O}^{(2)}(\xi) &= \prod_j e^{i \xi( jL_j + J_{j, j+1} )}
+\end{align}
+which acts by rotating all variables in the same direction. On the links, this looks like a regular monopole U(1) symmetry operator. But on the sites it acts as a multipole symmetry operator. The other symmetry operator
+\begin{align}
+\mathcal{O}^{(1)}(\xi) = \prod_j e^{i \xi L_j},
+\end{align}
+acts as a regular monopole operator on the sites.
+
+\note{Note that the most trivial version of this system would split $\op{2}$ into two symmetry operators, a monopole on the link rotors and a dipole on the sites. This would fully decouple the symmetries.}
+
+The Hamiltonian we are interested in is 
+\begin{align}
+H_b &= \sum_i \; A  L_i + B L_i^2 + C \cos \left( \theta_{i-1} - 2\theta_i+\theta_{i+1} \right)\nn
+H_d &= \sum_i \; A' J_{i,i+1} + B' J_{i,i+1}^2 + C' \cos \left( \phi_{i-1,i}-\phi_{i,i+1} \right) \nn
+H_{\int} &= g \sum_i \; \cos \left( \theta_{i}+\phi_{i,i+1} - \theta_{i+1} \right) \nn
+&= \frac{g}{2}\sum_i\left( e^{i\left( \theta_{i}+\phi_{i,i+1} - \theta_{i+1} \right)} + e^{-i\left( \theta_{i}+\phi_{i,i+1} - \theta_{i+1} \right) } \right)
+\end{align}
+The ground states are either number eigenstates or angle eigenstates. The advantage here is that the Hamiltonian is exactly solvable. The disadvantage is that the physical picture of condensed link variables facilitating hopping is not present.
+
+\subsection{Noninteracting phases}
+
+The noninteracting phases ($g=0$) are somewhat uninteresting. This is because symmetry breaking for the site systems behaves like dipole symmetry breaking, while the link systems undergo monopole symmetry breaking. To see this, consider the four phases.
+
+In the trivial phase, with $C,C'<<A,B,A',B'$, all rotors are in number eigenstates. The state is gapped and both symmetry operators act as an overall phase. We can write the ground state as $|n;m\rangle$, with energy
+\begin{align}
+E_{n;m} &= N\left(An+Bn^2+A'm+B'm^2\right),
+\end{align}
+where $N$ is the number of sites. If, for example, one of the sites were in state $|n+1\rangle$ instead of $|n\rangle$, the energy would be 
+\begin{align}
+N\left(An+Bn^2+A'm+B'm^2\right) + A+2Bn+B,
+\end{align}
+which would be higher than $E_{n;m}$ by a finite amount if $|n;m\rangle$ is the ground state. Call this phase I.
+
+If we let $C'>>A',B'$, then the link states will be angle eigenstates. Let us write the ground state (call it phase II) as $|n;\Phi\rangle$, with energy
+\begin{align}
+E_{n;\Phi} = N(An+Bn^2).
+\end{align}
+Clearly, we have a Goldstone mode. More generally, if we let $\tilde{\Phi}(j)$ be an arbitrary function, then
+\begin{align}
+E_{n;\Phi+\tilde{\Phi}(x)} = E_{n;\Phi} + \sum_jC' \cos( \Delta \tilde{\Phi}(j)),
+\end{align}
+with a dispersion quadratic in the first derivative of the angle. \note{Is this a monopole symmetry breaking phase or a dipole symmetry breaking phase?} The operator $\mathcal{O}^{(1)}$ acts as a phase but $\mathcal{O}^{(2)}$ moves within the ground state manifold. I guess the interesting question is: which CMW theorem does this phase obey?
+
+In phase III, if we instead let $C>>A,B$, the site variables condense. Since we have the lattice second derivative in the cosine, the dispersion is now quadratic in the second derivative of the angle. Ground states can be written as 
+\begin{align}
+|\Theta_1,\Theta_2; m\rangle = \bigotimes_j |\Theta_1 + j\Theta_2\rangle_j |m\rangle_{j,j+1},
+\end{align}
+so that either symmetry operator changes the state within the ground state manifold. Thus, we have true dipole symmetry breaking.
+
+Nothing extra happens when we let both variable types condense, in a state we will call phase IV. The takeaway is that the $g=0$ system should display two types of CMW-type theorems, but they should match either system independently. \note{That being said, should we be careful about operators like $\op{2}$ that act as a dipole operator on one sector and a monopole operator on another sector?}
+
+\subsection{CMW in the noninteracting case}
+
+\note{Obviously we need to generalize the system to higher dimensions before we can talk about CMW. But assuming it goes through in the simplest way possible\dots}
+
+Phase I should exist in any dimension. Since phase II has a $k^2$ dispersion, it should obey the monopole CMW theorem and exist for $d>1$. Note that this is true even though the dipole symmetry operator appears to be broken. 
+
+Naively, I would expect phases III and IV to exist for $d>2$, since they both have Goldstone bosons with $k^4$ dispersions coming from the site variables. At $d=2$, the site variables would become disordered, so that phase III would be demoted to phase I and phase IV to phase II. At $d=1$ the only valid phase is phase I (modulo topological defects \note{what is that behavior called? Luttinger liquid?})
+
+\subsection{Interacting phases}
+
+What happens if we now turn on $g>0$? There can be no fixed points with finite $g, A,$ and $B$, but \note{think about which way RG would flow}. Perturbation theory?
+
+In phase IV, we can include the interaction term nonperturbatively. The Hamiltonian,
+\begin{align}
+H = C \cos \left( \theta_{i-1} - 2\theta_i+\theta_{i+1} \right) + C' \cos \left( \phi_{i-1,i}-\phi_{i,i+1} \right) + g \cos \left( \theta_{i}+\phi_{i,i+1} - \theta_{i+1} \right),
+\end{align}
+has eigenstates $|\Theta_1,\Theta_2;\Phi\rangle$ with energy $E = Ng\cos(\Theta_2-\Phi)$. For a general state the energy looks like
+\begin{align}
+E &= C\cos\left( \Delta^2 \Theta \right) + C' \cos \left( \Delta \Phi \right) + g \cos \left( \Delta \Theta - \Phi \right)\nn
+&\simeq C(\partial^2\Theta)^2 + C'(\partial\Phi)^2 + g(\partial\Theta - \Phi)^2
+\end{align}
+\note{Understand relevance of different operators and NGB dispersions.}
+
+
+\bibliographystyle{unsrt}
+\bibliography{big}
+\end{document}

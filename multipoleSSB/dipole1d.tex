@@ -1,0 +1,138 @@
+\documentclass[12pt]{article}
+\usepackage[margin=1in]{geometry} 
+\usepackage{mathtools}
+\usepackage{xcolor}
+\usepackage{hyperref}
+
+\newcommand{\note}[1]{\textcolor{red}{#1}}
+\newcommand{\nn}{\nonumber\\}
+\newcommand{\goesto}{\rightarrow}
+\renewcommand{\int}{\text{int}}
+\newcommand{\ex}[1]{\left\langle#1\right\rangle}
+
+\title{1d Lattice with dipole symmetry}
+\author{charlie}
+\date{July 2021}
+
+\begin{document}
+
+\maketitle
+
+\section{First Attempt (classical spins)}
+
+\subsection{The model}
+
+Consider a 1d lattice, with d.o.f. on sites and links. On the sites we have spins $\sigma$ and on the links we have spins $\tau$.
+Let the Hamiltonian be
+\begin{align}
+H_0 &= H_\sigma + H_\tau \nn
+H_\int &= H_\sigma + H_\tau + H_{\sigma\tau}\nn
+H_\sigma &= \sum_x \left( m_\sigma^2 |\sigma_x|^2 + \lambda_\sigma|\sigma_x|^4 \right) + \sum_x g_\sigma  \left| \sigma_{x+1}\sigma_{x-1} - \sigma_x^2 \right|^2\nn
+H_\tau &= \sum_x \left( m_\tau^2 |\tau_{x,x+1}|^2 + \lambda_\tau|\tau_{x,x+1}|^4 \right) + \sum_x g_\tau \left| \tau_{x+1,x} - \tau_{x,x+1}\right|^2 \nn
+H_{\sigma\tau} &= \sum_x g_{\sigma\tau} \left| \sigma_x^*\sigma_{x+1} - \tau_{x,x+1} \right|^2.
+\end{align}
+This Hamiltonian is invariant under $\sigma_x \goesto e^{i(ax+b)}\sigma_x$, $\tau_{x,x+1} \goesto e^{ia}\tau_{x,x+1}$. Thus, $a$ parameterizes the dipole part of the multipole group and $b$ is the monopole part. Note that the interaction term is
+\begin{align}
+H_{\sigma\tau} &= \sum_x g_{\sigma\tau} \left| \sigma_x^*\sigma_{x+1} - \tau_{x,x+1} \right|^2\nn
+&= \sum_x g_{\sigma\tau} \left(| \sigma_x^*\sigma_{x+1} |^2 - \sigma_x^*\sigma_{x+1}\tau_{x,x+1}^* - \sigma_x\sigma_{x+1}^*\tau_{x,x+1} + |\tau_{x,x+1} |^2 \right),
+\end{align}
+where the first and last terms are potential terms.
+
+\subsection{So what?}
+
+The $(m,\lambda)$ terms allow us to condense $\sigma$ or $\tau$ separately, so there are four phases. When $\sigma$ is condensed, write it as $\sigma_x = e^{i\theta_x}$, ignoring normalization. Similarly, write $\tau_x = e^{i\phi_x}$. In the uncondensed phase, there is an unbroken dipole symmetry. Now, assume all the $\lambda$ and $g$ are positive.
+
+For $H_0$, there is a simple phase diagram, just depending on the signs of $m_\sigma$ and $m_\tau$. If $m_\sigma<0$, then the $\sigma$ condense, so that the $\theta$ are well-defined. This fully breaks the dipole symmetry, since $\theta_x \goesto \theta_x + ax+b$. The interesting phase is when $m_\tau<0<m_\sigma$. Then, $\phi_x$ is well defined byt $\theta_x$ is not, so that the ground state is invariant under $b$-type (monopole) transformations, but not $a$-type (dipole) transformation. \note{However, as you pointed out, this is somewhat trivial since the a-type transformations act as monopoles operators on the $\tau$ degrees of freedom}.
+
+If we instead focus on $H_\int$, there are interactions between the $\sigma$ and the $\tau$. \note{Is this what you meant by the link dofs facilitating hopping of the site dofs?}
+
+\section{Quantum rotors}
+
+The intermediate case between classical spins and bosons is quantum rotors. These have the advantage that the system is exactly solvable. On sites, we have degrees of freedom with states $|\theta\rangle$, $0\le \theta<2\pi$. The operators are $\theta$ and $L = -i\frac{\partial}{\partial\theta}$. On links, let the operators be $\phi$ and $J = -i\frac{\partial}{\partial\phi}$. The symmetry operator is 
+\begin{align}
+\mathcal{O}(\xi) &= \prod_je^{i\xi(jL_j+J_{j,j+1})}
+\end{align}
+which acts by rotating all variables in the same direction.
+
+Then
+\begin{align}
+H_b &= \sum_i \; A  L_i + B L_i^2 + C \cos \left( \theta_{i-1} - 2\theta_i+\theta_{i+1} \right)\nn
+H_d &= \sum_i \; A' J_{i,i+1} + B' J_{i,i+1}^2 + C' \cos \left( \phi_{i-1,i}-\phi_{i,i+1} \right) \nn
+H_{\int} &= g \sum_i \; \cos \left( \theta_{i}+\phi_{i,i+1} - \theta_{i+1} \right) \nn
+&= \frac{g}{2}\sum_i\left( e^{i\left( \theta_{i}+\phi_{i,i+1} - \theta_{i+1} \right)} + e^{-i\left( \theta_{i}+\phi_{i,i+1} - \theta_{i+1} \right) } \right)
+\end{align}
+The ground states are either number eigenstates or angle eigenstates. The advantage here is that the Hamiltonian is exactly solvable. The disadvantage is that the physical picture of condensed link variables facilitating hopping is not present.
+
+\subsection{Noninteracting phases}
+
+The noninteracting phases ($g=0$) are somewhat uninteresting. This is because symmetry breaking for the site systems behaves like dipole symmetry breaking, while the link systems undergo monopole symmetry breaking. To see this, consider the four phases.
+
+In the trivial phase, $C,C'<<A,B,A',B'$, all rotors are in number eigenstates. The state is gapped and the symmetry operator acts as an overall phase. If we let $C'>>A',B'$, then the link states will be angle eigenstates, with a dispersion quadratic in the first derivative of the angle. \note{Is this a monopole symmetry breaking phase or a dipole symmetry breaking phase?}
+
+If we instead let $C>>A,B$, the site variables condense. Since we have the lattice second derivative in the cosine, the dispersion is now quadratic in the second derivative of the angle. However, nothing extra happens when we let both variable types condense. The takeaway is that the $g=0$ system should display two types of CMW-type theorems, but they should match either system independently.
+
+\subsection{Interacting phases}
+
+The fixed point of the fully unbroken phase has the Hamiltonian
+\begin{align}
+H_b &= \sum_i \; A  L_i + B L_i^2 \nn
+H_d &= \sum_i \; A' J_{i,i+1} + B' J_{i,i+1}^2,
+\end{align}
+so that the ground state is $\left|\frac{A}{2B}\right\rangle$ on sites and $\left|\frac{A'}{2B'}\right\rangle$ on links, rounded to the nearest integer. This is a gapped phase, with the symmetry fully unbroken.
+
+The interesting behavior is when the link variables are condensed. Then the effective Hamiltonian is 
+\begin{align}
+H_\text{eff} &= \sum_i\; AL_i+BL_i^2 + g'\cos \left( \theta_i-\theta_{i+1} \right) + C\cos \left( \theta_{i-1} -2\theta_i + \theta_{i+1} \right),
+\end{align}
+which appears to have a relevant first lattice derivative term. \note{Does this allow some sort of workaround for the CMW theorem for the site operators?}
+
+\section{Try again with bosons}
+
+\subsection{Dipole hopping}
+
+\begin{align}
+H_b &= \sum_i \; A  n_i + B n_i^2 + C \left[ b^{\dag}_{i-1} b_i^2 b^{\dag}_{i+1} + H.C. \right]\nn
+H_d &= \sum_i \; A' n'_{i,i+1} + B' (n'_{i,i+1})^2 + C' \left[d^{\dag}_{i-1,i} d_{i,i+1} +H.C.\right]\nn
+H_{\int} &= g \sum_i \; b^{\dag}_i b_{i+1} d^{\dag}_{i,i+1} + H.C. 
+\end{align}
+
+The symmetry operator is $U = \prod_je^{i(aj+b)n_j}e^{ian'_{j,j+1}}$. Analysis follows Ref.~\cite{Chen2018}. We can access the interesting transitions by leaving $A, B, A', B'$, and $g$ fixed, tuning $C$ and $C'$. For concreteness, let $\ex{b^\dag b}=\ex{d^\dag d}=1$. \note{What does this line look like in the phase diagram?} 
+
+The disordered phase just has well-defined occupation numbers for sites and links. The fully-ordered phase has coherent states on sites, so the symmetry is completely broken. In this phase it doesn't really matter what's happening on the links. \note{Is this correct?} The interesting phase would be the one where the link variables are condensed and the site variables are not. Then the effective Hamiltonian is
+\begin{align}
+H_\text{eff} &= \sum_i\; A  n_i + B n_i^2 + g' \left[b_i^\dag b_{i+1} +H.C.\right] + C \left[ b^{\dag}_{i-1} b_i^2 b^{\dag}_{i+1} + H.C. \right],
+\end{align}
+so clearly there is some sort of cool phase transition. \note{Is this Hamiltonian correct?}
+
+In this intermediate phase, the monopole symmetry is preserved but the dipole symmetry is broken. This is almost trivially true in the link sector, but the statement is a little more interesting in the site sector.
+
+\subsection{Ground states}
+
+In the unbroken sector,
+\begin{align}
+|\Psi_0(n,m)\rangle &= \bigotimes_{i}|n_i\rangle |m_{ij} \rangle, \nn
+U(a,b)|\Psi_0(n,m)\rangle &= e^{i(aj+b)n+iam} |\Psi_0(n,m) \rangle \note{?}
+\end{align}
+In the first intermediate sector
+\begin{align}
+|\Psi_1(\gamma,m) &= \bigotimes_{i}|\gamma_i\rangle |m_{ij} \rangle, \nn
+&= 
+\end{align}
+
+\subsection{Correlation functions}
+
+Let $C_{ij}^b = \ex{b^\dag_ib_j}$ and $C_{ij}^d = \ex{d^\dag_{i,i+1}d_{j,j+1}}$
+
+In the unbroken sector
+\begin{align}
+C_{ij}^b &= 
+\end{align}
+
+\subsection{Dispersion relations}
+
+
+
+
+\bibliographystyle{unsrt}
+\bibliography{big}
+\end{document}

@@ -1,0 +1,37 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=1in]{geometry} 
+\usepackage{mathtools}
+\usepackage{xcolor}
+
+\newcommand{\note}[1]{\textcolor{red}{#1}}
+\newcommand{\ex}[1]{\left\langle#1\right\rangle}
+\newcommand{\nn}{\nonumber\\}
+\renewcommand{\th}[1]{\frac{1}{#1}}
+\newcommand{\half}{\th{2}}
+\newcommand{\IR}{\text{IR}}
+\renewcommand{\l}{\ell}
+\newcommand{\cl}{\text{cl}}
+\newcommand{\q}{\text{q}}
+\newcommand{\goesto}{\rightarrow}
+
+\title{Subsystem vs Multipole}
+\author{charlie}
+\date{October 2021}
+
+\begin{document}
+
+\maketitle
+
+For subsystem symmetries we have the conservation law
+\begin{align}
+\frac{d}{dt} \int_{y=a} dx \; \rho = \frac{d}{dt} \int_{x=b} dy \; \rho = 0.
+\end{align}
+This is equivalent to the conservation law
+\begin{align}
+0 &= \frac{d}{dt} \int dxdy \, \big ( f(x) + g(y) \big )\rho,
+\end{align}
+for arbitrary functions $f$ and $g$. We can then Taylor expand these functions. This makes the conservation law look like a conservation law for a multipole symmetry where the polynomials are $x, x^2, x^3, \dots$ and $y, y^2, y^3, \dots$
+
+
+\end{document}

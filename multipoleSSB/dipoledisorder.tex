@@ -1,0 +1,55 @@
+\documentclass[12pt]{article}
+\usepackage[margin=1in]{geometry} 
+\usepackage{mathtools}
+\usepackage{xcolor}
+
+\newcommand{\note}[1]{\textcolor{red}{#1}}
+\renewcommand{\cal}{\mathcal}
+\newcommand{\nn}{\nonumber\\}
+
+\title{Dipole symmetry with dipole disorder}
+\author{charlie}
+\date{September 2021}
+
+\begin{document}
+
+\maketitle
+
+Consider the Hamiltonian
+\begin{align}
+H_b &= \sum_j \left[ A  n_j + B n_j^2 \right] + C\sum_{j,\mu,\nu}  b_j b^{\dag}_{j+\mu} b^{\dag}_{j+\nu} b_{j+\mu+\nu} + h_d \sum_{j,\mu} \sigma^*_{j,\mu}\; b^\dag_jb_{j+\mu} + H.C.
+\end{align}
+for bosons living on sites, where we let $\sigma$ take values in the unit circle. In the condensed phase, let $b_j = \exp i \phi_j$, and write $\sigma_{j,\mu} = \exp i \theta_{j,\mu}$. The effective Hamiltonian is
+\begin{align}
+H_\text{eff} &= C \sum_{j,\mu, \nu} \cos \left( \phi_j - \phi_{j+\mu} - \phi_{j+\nu} + \phi_{j+\nu+\mu} \right) + h_d \sum_{j,\mu} \cos \left( \phi_{j+\mu} - \phi_{j} - \theta_{j,\mu} \right) \nn
+&= \int d^dx \left( -Ca^4 \left( \partial_\mu \partial_\nu \phi(x) \right)^2 - h_d \left(a\partial_\mu \phi (x) - \theta_\mu(x) \right)^2 \right),
+\end{align}
+where the second term picks out a preferred direction \note{(and magnitude?)} for the derivative. How do we interpret this? And how do we incorporate it into the scaling argument?
+
+
+
+
+
+% Then, in the (classical) continuum, we have Goldstone modes with energy density
+% \begin{align}
+% \mathcal{E} = C k^4 + \xi k^2,
+% \end{align}
+% where $\xi$ varies randomly with mean 0. If $\xi$ were constant, the critical dimension would be $d=2$. If $\xi=0$, the critical dimension would be $d=4$. While $C$ is set by the lattice Hamiltonian, $\xi$ is emergent. Similar to the Imry-Ma argument, we have $\langle \xi^2\rangle^{1/2}\sim L^{d/2}$. Thus, the cost of forming domains of size $L$ scales as
+% \begin{align}
+% E &\sim CL^{d-4} + L^{d/2-2},
+% \end{align}
+% so that the critical dimension is now $d=4$. This is the same as when $\xi=0$. Evidently in this case the disorder does not affect things. 
+
+% Instead, let us consider a system with a quadrupole symmetry imposed, so there is an ordered $k^8$ term. Let there be monopole disorder with strength $h_b$ and dipole disorder with strength $h_d$. The dispersion should look like $\mathcal{E} = Ck^8 + \xi k^2$, with $\xi$ random and a function of $h_d$. The critical dimensions are
+% \begin{alignat}{2}
+% d &= 8,\qquad &&h_b=h_d=0\nn
+% d &= 16,\qquad &&h_b\ne 0, h_d=0\nn
+% d &= 4,\qquad &&h_b=0, h_d\ne 0\nn
+% d &= 16, \qquad &&h_b\ne 0, h_d\ne 0,
+% \end{alignat}
+% where the last case is because the cost from the disordered $k^4$ term is $L^{d/2-2}$, which is always overpowered by the gain of $L^{d/2}$
+% \note{Does that seem right?}
+
+
+
+\end{document}

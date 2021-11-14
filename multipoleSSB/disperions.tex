@@ -1,0 +1,86 @@
+\documentclass[12pt]{article}
+\usepackage[margin=1in]{geometry} 
+\usepackage{mathtools}
+\usepackage{xcolor}
+
+\newcommand{\note}[1]{\textcolor{red}{#1}}
+\renewcommand{\cal}{\mathcal}
+\newcommand{\nn}{\nonumber\\}
+
+\title{Nontrivial dispersion relations}
+\author{charlie}
+\date{September 2021}
+
+\begin{document}
+
+\maketitle
+
+\section{Symmetries and dispersions}
+
+Monopole symmetry means the kinetic term cannot see constant shifts, so the invariant derivative has to be $D\phi = \partial_i \phi$. Then the kinetic term is $(\partial_i\phi)^2$, and the propagator is $k_ik_i = k^2$. In general, if there are no solutions to Eqns.~28-31 in Gromov's paper, then we have to use the maximal kinetic term $(\partial_{i_1}\dots \partial_{i_n})$, which is invariant under any transformation from $\mathcal{M}_\text{max}^{n-1}$. Then the kinetic term is $(\partial_{i_1}\dots \partial_{i_n} \phi)^2$, the propagator is $(k^2)^n$, and the (classical) critical dimension is $d=2n = 2(a+1)$, the result Gromov quotes from the Griffin paper. 
+
+Gromov points out that Eqns.~28-31 are overdetemined and it is not clear when they have a solution. However, they do sometimes have a solution. For example, consider the dipole group extended by transformations of the form $\delta \phi = \mu_{ij}x^ix^j$ where $\mu$ is traceless. Then the most-relevant kinetic term is $(\partial^2 \phi)^2$, so that the propagator is $(k^2)^2$. Clearly, the classical critical dimension is $d=4$, in contrast to Gromov's claim that it should be $d=6$ since we include some polynomials of degree $2$. Gromov's claim is incorrect because he is citing the Griffin paper, where they always assume the maximal multipole group.
+
+Can we make any more general statements about the correct critical dimension? We can divide the cases into isotropic and anisotropic as follows.
+
+\section{CMW theorems}
+
+\subsection{Isotropic}
+
+The non-maximal, isotropic dispersion relations with smallest degree are the two parts of the dipole dispersion,
+\begin{align}
+E_1 &\sim (k^2)^2, \qquad \qquad E_2 \sim (k_i k_j)^2, \quad i\ne j.
+\end{align}
+Note that $(k^2)^2 = (k_ik_j)^2$, where the latter is the dispersion for the maximal dipole group. Furthermore, $(d-1)E_1=dE_2$. However, the two dispersions are built from different invariant derivatives using Gromov's prescription (Eqn. 36) and the requirement that the kinetic term be rotationally invariant.
+Although these are dipole dispersion relations, they each individually admit a reduced but still isotropic quadrupole symmetry. Since they are constant multiples of $(k^2)^2$, they both share their critical dimension with the maximal dipole dispersion.
+
+\subsection{Anisotropic}
+
+Now, what about the dispersion relation $E = k^4 + p^2$, where $k$ has $d-1$ components and $p$ is a scalar? The correlation is
+\begin{align}
+C &\sim \int \frac{d^{(d-1)}k \, dp}{k^4 + p^2} \nn
+&\sim \int \frac{d^{(d-1)}k}{k^2},
+\end{align}
+which diverges at $d=3$, which does not match the CMW theorem for any maximal dispersion relation. We can explain this result by assuming the field varies linearly in the $p$ direction and quadratically in the $k$ directions. The energy density will be $\sim L_p^{-2}$ or $L_k^{-4}$, depending on which direction it is varying in. The total energy cost is
+\begin{align}
+E &\sim L_p^{-2} L_k^{(d-1)} L_p + L_k^{-4} L_k^{(d-1)} L_p\nn
+&\sim L_k^{(d-1)} L_p^{-1} + L_k^{(d-5)} L_p
+\end{align}
+which is minimized when $L_p \sim L_k^2$. Then $E\sim L_k^{d-3}$, so there is no energy cost at $d=3$, agreeing with the correlation calculation.
+
+
+We can generalize this by letting $k$ have $q$ components and $p$ have $r$ components, with $d=q+r$. The correlation is
+\begin{align}
+C &\sim \int \frac{d^qk \, d^r\!p}{k^4 + p^2}\nn
+&\sim \int d^qk \int \frac{p^{(r-1)}dp}{k^4+p^2} \nn
+&\sim \begin{cases} \int d^qk \log k^4, &r=2\\
+    \int \frac{d^qk}{k^2}, & r=1,
+\end{cases}
+\end{align}
+so that if $r=2$ the symmetry can never be broken, and if $r=1$ then $q=2$ is critical. Of course, if $r=0$ we have an isotropic quartic dispersion and $q=4$ is critical. 
+
+We can again appeal to the energy-scaling argument. This time, the total energy cost is
+\begin{align}
+E &\sim L_k^{q} L_p^{r-2} + L_k^{q-4} L_p^r,
+\end{align}
+so that $L_p \sim L_k^2$ as before, and $E\sim L_k^{q+2r-4}$. Combinations $(q,r)$ for which symmetry breaking cannot occur are
+\begin{align}
+&(0,0), (0,1), (0,2), \nn
+&(1,0), (1,1), \nn
+&(2,0), (2,1), \nn
+&(3,0), \nn
+&(4,0).
+\end{align}
+We see that the critical dimension $d=q+r$ can be 2, 3, or 4, depending on how many directions have quadratic or quartic dispersions.
+
+\subsection{Haah}
+
+In the Haah group, the three derivatives are
+\begin{align}
+D_1 &= \partial_1 + \partial_2 + \partial_3,\nn
+D_2 &= \partial_1^2 + \partial_2^2 + \partial_3^2,\nn
+D_3 &= \partial_1 \partial_2 + \partial_2 \partial_3 + \partial_3 \partial_1.
+\end{align}
+At this point, Gromov writes down the kinetic term as $g_{\alpha\beta} (D_\alpha \phi) (D_\beta \phi)$, and he also gauges it. Is there a unique way to turn this into a dispersion relation?
+
+\end{document}

@@ -1,0 +1,229 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=1in]{geometry} 
+\usepackage{mathtools}
+\usepackage{xcolor}
+
+\newcommand{\note}[1]{\textcolor{red}{#1}}
+\newcommand{\ex}[1]{\left\langle#1\right\rangle}
+\newcommand{\nn}{\nonumber\\}
+\renewcommand{\th}[1]{\frac{1}{#1}}
+\newcommand{\half}{\th{2}}
+\newcommand{\IR}{\text{IR}}
+\renewcommand{\l}{\ell}
+\newcommand{\cl}{\text{cl}}
+\newcommand{\q}{\text{q}}
+\newcommand{\goesto}{\rightarrow}
+
+\title{CMW for Multipole Systems}
+\author{charlie}
+\date{May 2021}
+
+\begin{document}
+
+\maketitle
+
+Throughout this document I will use $d$ for space dimensions and $D$ for spacetime dimensions.
+
+\section{Review monopole systems}
+
+Consider the Hamiltonian
+\begin{align}
+H &= \int d^dx\, \left( \partial_i\sigma \partial_i\sigma + m^2|\sigma|^2 + \lambda|\sigma|^4 + \cdots \right),
+\end{align}
+with the symmetry $\sigma(x)\goesto e^{i c} \sigma(x)$. There are two phases. For $m^2>0$ we have a disordered phase with $\ex{\sigma}=0$ and for $m^2<0$ we have an ordered phase with $\ex{\sigma} \ne 0$. 
+
+The diagnostic for symmetry breaking is the correlation function,
+\begin{align}
+C(x) &= \ex{\sigma(x)\sigma(x)} - \ex{\sigma(x)\sigma(0)}\dots
+\end{align}
+
+Deep in the ordered phase, we can ignore longitudinal fluctuations and write $\sigma(x) = e^{i\phi(x)}$, with
+\begin{align}
+H &= \int d^d x(\partial_i \phi \partial_i \phi),
+\end{align}
+which now has an honest shift symmetry $\phi(x)\goesto \phi(x)+c$. This is the Hamiltonian we use to evaluate the validity of the ordered phase. However, it is only valid deep in the ordered phase!
+
+\section{Effective field theories}
+
+Euclidean field theory.
+
+For monopole symmetries, the relationship between the original and ssb effective field theories is straightforward. Say we have a field $\sigma(x)\in \mathbf{C}$ and a symmetry $\sigma(x)\goesto e^{i c} \sigma(x) $, with $c\in \mathbf{R}$ a constant. \note{This is NOT a shift symmetry. Does it make sense to call it a monopole symmetry?} Say the Hamiltonian is
+\begin{align}
+H &= \int d^dx\, \left( \partial_i\sigma \partial_i\sigma + V(|\sigma|) \right)\nn
+&= \int d^dx\, \left( \partial_i\sigma \partial_i\sigma + m^2|\sigma|^2 + \lambda|\sigma|^4 + \cdots \right),
+\end{align}
+so that when $m^2>0$ the symmetry is unbroken. Now let $m^2<0$ and let the potential be deep enough that $\sigma$ can effectively be described as $\sigma=e^{i\phi(x)}$.
+
+The effective Hamiltonian for $\phi$ is 
+\begin{align}
+H &= \int d^dx\,\left( \partial_i\phi \partial_i\phi + \cdots \right),
+\end{align}
+which now has a monopole symmetry that \emph{is} a shift symmetry, $\phi(x)\goesto \phi(x)+c$
+
+On the other hand, if we start with the Hamiltonian
+\begin{align}
+H &= \int d^dx \left( \partial_i\partial_j \sigma \partial_i \partial_j \sigma + \cdots \right),
+\end{align}
+then the Hamiltonian in terms of $\phi$ is
+\begin{align}
+H &= \int d^dx \big( (\partial_i \partial_j \phi) (\partial_i \partial_j \phi) + (\partial_i \phi \partial_j \phi) (\partial_i \partial_j \phi) + (\partial_i \partial_j \phi) (\partial_i \phi \partial_j \phi) + (\partial_i \phi \partial_j \phi) (\partial_i \phi \partial_j \phi) \big),
+\end{align}
+which has a bunch of interaction terms. \note{Does that matter?}
+
+\note{Does Gromov care about symmetry breaking? How do Griffin et al. handle this?}
+
+\section{Quantum systems}
+
+Ref.~\cite{Griffin2015} considers nonrelativistic quantum systems with the action
+\begin{align}
+S = \int dt\, d^dx \left\{ \half \dot{\phi}^2 -\half \zeta_n^2 (\partial_{i_1} \dots \partial_{i_n} \phi)^2 + \cdots \right\},
+\end{align}
+where $\cdots$ represents higher order terms. Such an action has a dynamical critical exponent $z = n$. Although this exponent is fixed, we will leave factors of $z$ explicit for clarity.
+
+Since the action is dimensionless and $[dt\,d^dx] = -z-d$ in units of spatial momentum, we have 
+\begin{align}
+[\phi] = \frac{d-z}{2},\qquad [\zeta_n] = z-n = 0,
+\end{align}
+so that $\phi$ is dimensionless at $d=z=n$. Ref.~\cite{Griffin2015} then shows that the $\phi$ field cannot exist at or below $d=n$ as follows.
+
+Consider the propagator for the $\phi$ field,
+\begin{align}
+\ex{\phi(t,x) \phi(0)} = \int\frac{d\omega\, d^dk}{(2 \pi)^{d + 1}} \frac{e^{ik\cdot x -\omega t}}{\omega^2 + k^{2d} + \mu^{2d}},
+\end{align}
+where $\mu$ is an IR regulator. For large $|x|$ we can set $t=0$, so that
+\begin{align}
+\ex{\phi(t,x) \phi(0)} &= \int \frac{d^dk}{(2 \pi)^{d + 1}}e^{ik\cdot x} \int_{-\infty}^{\infty} \frac{d \omega}{\omega^2 + (k^d + \mu^d)^2}\nn
+&= \pi \int \frac{d^dk}{(2 \pi)^{d + 1}} \frac{e^{ik\cdot x}}{k^{d}+\mu^{d}}\nn
+&= \th{2(2\pi)^d}\int d^d\l\, \frac{e^{i\mu\,\l\cdot x}}{\l^d + 1}\nn
+&= \frac{\Omega_d}{2(2\pi)^d}\int_0^\infty \l^{d-1} d\l \int \frac{d\phi}{2\pi}\frac{e^{i\mu|x|\l\cos \phi}}{\l^d+1}\nn
+&= \th{(4\pi)^{d/2}\Gamma(d/2)}\int_0^\infty \frac{d \l\, J_0( \mu|x|\l)}{\l+ \l^{1-d}},
+\end{align}
+which \note{I still don't know how to do}. After some manipulations,
+\begin{align}
+\ex{\phi(t,x) \phi(0)} &= -\th{(4\pi)^{d/2} \Gamma(d/2)}\log(\mu|x|),
+\end{align}
+matching Eqn.~2.25 in Ref.~\cite{Griffin2015}.
+
+Personally, I prefer to introduce $\mu$ as a cutoff, so
+\begin{align}
+\ex{\phi(t,x) \phi(0)} &= \int \frac{d^dk}{(2 \pi)^{d + 1}}e^{ik\cdot x} \int_{-\infty}^{\infty} \frac{d \omega}{\omega^2 + k^{2d}}\nn
+&\sim \int \frac{d^dk}{(2 \pi)^{d + 1}} \frac{e^{ik\cdot x}}{k^d}\nn
+&\sim \int_\mu^\Lambda \frac{dk}{2\pi} \frac{J_0(k |x|)}{k}\nn
+&\sim -\log(\mu|x|),
+\end{align}
+where we have ignored constants.
+
+Regardless, the point is that the lower critical dimension is $d=z=n$, and that it doesn't matter how we introduce the IR regulator.
+
+
+\section{Nontrivial dynamical critical exponents}
+
+Usually, we talk about a correspondence between \begin{itemize}
+    \item phase transitions in classical systems with $d_\cl$ space dimensions at finite temperature
+    \item phase transitions in quantum systems with $d_q=d_\cl-1$ space dimensions at zero temperature.
+\end{itemize}
+The first step in the argument is to Wick rotate the quantum theory to obtain a Euclidean theory in $d_q+1$ space dimensions. That theory can then be reinterpreted as a classical theory where all dimensions are spatial.
+
+A key part of the argument was that the Euclidean theory was isotropic, because the quantum theory was relativistic. If the original quantum theory instead had a nontrivial critical exponent $z\in \textbf{Z}, z\ne 1$, the argument is different.
+
+The most naive solution is to let $d_\cl = d_\q + z$. Let's see if that works.
+
+\section{Classical systems}
+
+Compare to Griffin.
+
+The Hamiltonian we care about is
+\begin{align}
+\beta H &= \half\int d^dx\, (\partial_{ i_1} \dots \partial_{ i_n}\phi) (\partial_{ i_1} \dots \partial_{ i_n}\phi) \nn
+&= -\half\int d^dx\, \phi(\partial^2)^n \phi,
+\end{align}
+and we will set $\beta=1$.
+
+\subsection{Naive energy scaling}
+
+Start with the clean case, with no disorder. Then there is no energy gain from forming domains. Say we form domains anyway, with size $L$. In the original $n=1$ case the order parameter varies linearly over a size $L$, say in the $z$ direction. The energy cost is
+\begin{align}
+\Delta H &= \int d^{d-1}x \int dz (\partial_z \phi)^2\nn
+&= L^{d-1} \int dx \th{L^2}\nn
+&= L^{d-2},
+\end{align}
+so domains proliferate if $d\le 2$.
+
+For larger $n$ we want to minimize $(\partial_z^n \phi)^2$. Naively, we can do this by gluing together regions where $\phi$ scales as an order-$n$ polynomial (\note{Can we do better?}). For example, for $n=2$ we would have
+\begin{align}
+\phi = \begin{cases}
+    2\left(\frac{z}{L}\right)^2, & 0<z<\frac{L}{2}\\
+    -2\left(\frac{z-L}{L}\right)^2+1, & \frac{L}{2}<z< 1
+\end{cases},
+\end{align}
+so that $(\partial_z^2 \phi)^2=L^{-4}$ is constant. Then, the energy cost is
+\begin{align}
+\Delta H &= \int d^{d-1}x \int dz (\partial_z^n \phi)^2\nn
+&= L^{d-1} \int dx L^{-2n}\nn
+&= L^{d-2n},
+\end{align}
+so the critical dimension is $d=2n$. Recall that in the quantum case we had $d_\q=z=n$, so our naive energy scaling argument matches the naive prediction $d_\cl = d_\q+z = 2n$. Good!
+
+Now say there is some Gaussian quenched disorder and the order parameter forms domains of size $L$. Regardless of $n$, the energy gains from these domains is $L^{d/2}$.  The gain and cost balance out when $d/2 = d-2n$, so the critical dimension is now $d=4n$. That seems large, but it matches the $n=1$ case so it's at least not crazy.
+
+\subsection{Diverging correlation function}
+
+We want to use the correlation function to diagnose long-range order. If the correlation function remains finite at large distance, then the phase is ordered.
+The correlation function that we care about is  
+\begin{align}
+C(x) &= \half \ex{(\phi(x)-\phi(0))^2} =  \langle\phi(0)\phi(0) - \phi(x)\phi(0)\rangle\nn
+&= \int\frac{d^dk}{(2\pi)^2} \frac{1-e^{ik \cdot x}}{k^{2n}} \nn
+&= \int dk\, k^{d-1-2n} \int_0^{2\pi} \frac{d\phi}{2\pi}(1 - e^{ikx \cos\phi} )\nn
+&= \int dk\, k^{d-1-2n} (1 - J_0(kx)),
+\end{align}
+where $J_0(kx)$ is a Bessel function and we're ignoring constants. 
+%We care about the asymptotic forms $J_0(kx) = 1$ for $kx<<1$ and $J_0(kx) = \sqrt{2/(\pi kx)}\cos(kx-\pi/4)$ for $kx>>1$. 
+% The infrared regulator enters either in the form of a cutoff $\mu_\IR$ or by modifying the propagator to
+% \begin{align}
+% G(x) = \int\frac{d^dk}{(2\pi)^d}\frac{e^{ik\cdot x}}{k^{2n} + \mu_\IR^{2n}},
+% \end{align}
+% where we now see that $\mu_\IR$ has the interpretation of mass only when $n=1$.
+We will introduce an IR cutoff into the integral, rather than as a regulator.
+
+If we take $n=1$ we should recover the CMW theorem,
+\begin{align}
+C(x) &= \int_\mu^\Lambda dk\, k^{d-3} (1 - J_0(kx)) \nn
+&= x^{2-d} \int_{\mu x}^{\Lambda x} dy\, y^{d-3} (1 - J_0(y)) \nn
+&= \begin{cases}
+\Lambda^{d-2}, & d>2,\\
+\log(\Lambda x) - \log(\mu x), & d=2,\\
+x^{2-d}, & d<2,
+\end{cases}
+\end{align}
+matching Griffin 2.21. \note{Redo for regulator analysis?}
+
+For general $n$ everything goes through the same way and we get
+\begin{align}
+C(x) &= \int_\mu^\Lambda dk\, k^{d-1-2n} (1 - J_0(kx)) \nn
+&= \begin{cases}
+\Lambda^{d-2}, & d>2n,\\
+\log(\Lambda x) - \log(\mu x), & d=2n,\\
+x^{2-d}, & d<2n,
+\end{cases}
+\end{align}
+so that now the critical dimension is $2n$, matching the energy scaling. The result is that above the critical dimension, the correlation function asymptotes to a finite value, so the symmetry must be spontaneously broken. Below the critical dimension, the correlation function diverges and the symmetry is preserved.
+
+Now, in the case of quenched disorder we will follow the conventions of Imry and Ma~\cite{ImryMa} where
+\begin{align}
+\Delta H = -\int d^dx\, h(x) \sigma(x),
+\end{align}
+with $\sigma(x) = e^{i\phi(x)}$ and $h(x)\in \mathbf{C}$. Then 
+\begin{align}
+G_\perp(k) &= \th{k^{2n}},
+\end{align}
+and
+\begin{align}
+\ex{m_\perp(x)m_\perp(0)} &= \int d^dk\, G_\perp^2 e^{ik \cdot x}\nn
+&= \int dk\, k^{d-4n-1}J_0(kx)
+\end{align}
+which diverges for $d\le 4n$, reproducing the naive energy scaling.
+
+\bibliographystyle{unsrt}
+\bibliography{big}
+\end{document}
