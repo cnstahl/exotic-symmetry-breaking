@@ -65,7 +65,7 @@ In this work, we place generalized Mermin-Wagner and Imry-Ma constraints on the 
 
 Throughout, we consider only multipole groups where the underlying internal group is continuous and abelian. For concreteness, we will say it is $U(1)$. Multipole groups with a nonabelian underlying symmetry suffer a cascade effect where the dynamics in at least one direction must be trivial~\cite{nonabelian} and we shall not discuss them here. We note that specific examples of spontaneous symmetry breaking of multipolar symmetries have been discussed (sometimes in a dual language) in \cite{elastic1, elastic2, elastic3, elastic4, elastic5, FS1, FS2}. Our goal here is to place general constraints on when certain symmetry breaking phase transitions involving multipolar symmetries can occur. 
 
-Many of the differences from the ordinary Mermin-Wagner theorem come from the soft dispersions of the relevant Goldstone modes. Although soft Goldstone modes exist in other models, they generically only emerge at fine-tuned points. As we will see, the multipole symmetries make the soft modes natural, in the sense that the theories do not have to be fine-tuned. In addition, in Sec.~\ref{sub:partial} we will see that there are exotic partial symmetry-breaking options that are not available in the presence of non-multipolar soft modes. 
+The differences from the ordinary Mermin-Wagner theorem all come from the soft dispersions of the relevant Goldstone modes. Although soft Goldstone modes exist in other models, they generically only emerge at fine-tuned points. As we will see, the multipole symmetries make the soft modes natural, in the sense that the theories do not have to be fine-tuned. Rather, the soft modes must exist in the presence of various multipolar symmetries.
 
 This paper is organized as follows. In Section \ref{multipolegroup} we introduce the multipole group, and how to build field theories invariant under it. In section \ref{sec:full_breaking} we discuss generalized Mermin-Wagner arguments for situations in which a multipole group is spontaneously broken down to the trivial group, while in Section~\ref{sec:partial} we explore the more subtle case where a nontrivial subgroup is preserved. This analysis allows us to construct examples where a single symmetry-breaking pattern can be described by several distinct types of Goldstone modes, as well as an example where a continuous symmetry is spontaneously broken in one dimension at $T=0$. 
 We then discuss generalized Imry-Ma arguments in the presence of quenched disorder in Section~\ref{sec:disord}. Finally, in Section~\ref{sec:example} we consider an explicit lattice model that illustrates some of the ideas of the previous sections. We conclude with a discussion of open questions in \ref{sec:disc}.
@@ -162,9 +162,27 @@ Finally, some of these multipole symmetries can be gauged to arrive at effective
 
 \section{Generalized Mermin-Wagner: full multipole breaking}\label{sec:full_breaking}
 
-We are now ready to describe the generalized Mermin-Wagner argument in the case where an arbitrary maximal multipole group is spontaneously broken down to the trivial subgroup. This already appears in Ref.~\cite{Griffin2015}, so we are simply reviewing it here in preparation for the more generic cases to follow. Here, we will discuss both thermal and $T=0$ systems, and diagnose spontaneous symmetry breaking using the divergence of correlation functions.
+We are now ready to describe the generalized Mermin-Wagner argument in the case where an arbitrary maximal multipole group is spontaneously broken down to the trivial subgroup. This already appears in Ref.~\cite{Griffin2015}, so we are simply reviewing it here in preparation for the more generic cases to follow. Here, we will discuss both thermal and $T=0$ systems. We will start with a heuristic argument in terms of domain wall energies before discussing a more careful diagnosis of spontaneous symmetry breaking in terms of correlation functions.
 
-As a warm-up, consider the standard case where a monopole U(1) symmetry is spontaneously broken, leading to a Goldstone boson $\phi(x)$. The correlation function
+Consider first a clean system at $T>0$ with a spontaneously broken maximal multipole symmetry of degree $a$.
+Then the kinetic term is proportional to 
+\begin{align}
+K[\phi(x)] = (\partial_{I_{a+1}} \phi)^2. \label{eqn:adisp}
+\end{align} 
+Symmetry breaking field configurations will be of the form $\phi(x) = c + c_ix^i + \dots+ c_{I_a}x^{I_a}$, so there is no kinetic energy. 
+
+Now consider nucleating domains of linear size $L'$ in which the field takes on a new configuration $\phi(x) = c' + c'_ix^i + \dots + c'_{I_a}x^{I_a}$. In the thick domain ``wall" surrounding the domain, the coefficients will vary from their background unprimed values to the primed values in the domain. The equations of motion from~\eqref{eqn:adisp} say that $\phi$ should vary as a degree-$(2a+1)$ polynomial in this region.
+
+Let us align the domain wall in the $x^1$ direction with thickness $L$, so that $\phi$ takes its unprimed values at $x^1=0$ and its primed values at $x^1=L$. We can build a degree-$(2a+1)$ polynomial by including factors of $(x^1)^{2a+1}/L^{2a+1}$. Terms with fewer powers of $L$ in the denominator will not be seen by the kinetic energy. For large $L$, terms with more powers of $L$ in the denominator will be subleading. Thus the energy density in the domain wall scales as $K\sim L^{-2(a+1)}$. Integrating over a spherical shell gives a total energy cost of
+\begin{align}
+E &\sim \left( (L'+L)^d -(L')^d \right) L^{-2(a+1)} \nonumber\\
+&\sim L^{d-2(a+1)},
+\end{align}
+where the last line comes from setting $L\sim L'$, which minimizes the energy cost.
+
+In clean systems there is no energy gain from domain nucleation. When $d\le2(a+1)$, the energy cost is bounded, so the entropy gain favors domain creation. Thus, ordered phases are unstable and SSB cannot occur for $d\le2(a+1)$.
+
+We can reproduce this argument by considering correlation functions. As a warm-up, consider the standard case where a monopole U(1) symmetry is spontaneously broken, leading to a Goldstone boson $\phi(x)$. The correlation function
 \begin{align}
 C(x) = \left\langle \phi(x) \phi(0) \right\rangle = \int \frac{d^dk}{(2\pi)^d} \frac{e^{i k \cdot x}}{k^2}, 
 \end{align}
@@ -176,7 +194,7 @@ C \sim \int \frac{d^dk}{K_k} \sim \int \frac{d^dk}{k^{2(a+1)}}, \label{eqn:corre
 \end{align}
 which diverges for $d\le2(a+1)$. As before, we interpret the divergence of the correlation function as a sign that the symmetry cannot be spontaneously broken. This allows us to reproduce our scaling argument that SSB of the multipole group $\mathcal{M}^a_\max$ cannot occur for $d\le2(a+1)$.
 
-In the zero temperature setting, we calculate the correlation function by way of the (imaginary-time) IR Lagrangian 
+If we look at the zero temperature setting, the energy scaling no longer tells us where the critical dimension is. This is because even when there is no energy cost to forming domains, there is no entropy gain. Instead, quantum fluctuations must be the motivation for domain nucleation. To find the quantum critical dimension, we calculate the correlation function by way of the (imaginary-time) IR Lagrangian 
 \begin{align}
      \mathcal{L}[\phi] = (\partial_\tau\phi)^2 + K[\phi].
 \end{align} 
@@ -208,6 +226,16 @@ C &\sim \int \frac{d^{d_2} k \, d^{d_1} p}{k^4 + p^2}\nn
 \end{align}
 where $q^2 = x^2 + p^2 = k^4 + p^2$. 
 If $d_1=2$ the symmetry can be broken for any $d_2>0$, and if $d_1=1$ then $d_2=2$  is critical. Of course, if $d_1=0$ we have an isotropic quartic dispersion and $d=d_2=4$ is critical. 
+
+We can recover this result in  the energy-scaling argument. Since the system is anisotropic, the domains will have different sizes in different directions. Consider forming a domain of linear size $L_p$ in the  direction with quadratic dispersion and $L_k$ in the quartic direction. When the gradient of the order parameter is in the quadratic direction, the order parameter has to change over a length $L_p$ so the energy density is $L_p^{-2}$. Similarly, when the order parameter is changing in the quartic direction its energy density is $L_k^{-4}$. 
+
+Both of these energy densities will be integrated over domain ``walls" with volume $L_k^{d_2} L_p^{d_1}$.
+As a result, the total energy cost is
+\begin{align}
+E &\sim L_k^{d_2} L_p^{d_1-2} + L_k^{d_2-4} L_p^{d_1},
+\end{align}
+so that $L_p \sim L_k^2$ to make the terms match, and $E\sim L_p^{d_2/2+d_1-2}$. Recall that when $E$ does not increase for larger domains, the entropy gain will cause them to nucleate, destroying the ordered phase.
+We see that the critical dimension $d= d_2 + d_1$ can be 2, 3, or 4, depending on how many directions have quadratic or quartic dispersions.
 
 The $T=0$ correlation function behaves as
 \begin{align}
@@ -245,7 +273,7 @@ where $\phi$ transforms under the symmetry as $\phi \mapsto \phi + \alpha + \bet
  In the scalar theory \eqref{singlescalar}, the analysis of section \ref{sec:full_breaking} shows that the monopole symmetry is {\it not} spontaneously broken, with $e^{i\phi}$ possessing short-ranged correlation functions. However, the dipolar symmetry does indeed have SSB, and it is easy to check that the operators $e^{i\p_j\phi}$ --- which transform under the symmetry in the same way as $e^{i\t_j}$ --- have long-range order. Thus in this case, the two theories \eqref{vector} and \eqref{singlescalar} exhibit the same pattern of symmetry breaking, despite having a different number of Goldstone modes.\footnote{We will refer to the mode $\phi$ in the theory \eqref{singlescalar} as the ``Goldstone mode'' of the spontaneously broken dipole symmetry, since it is the only mode in the theory. Note however that it is $\p_j\phi$ (and not $\phi$ itself) which transforms under the symmetry action in the way expected of Goldstone bosons.} In order to formulate the correct version of the Mermin-Wagner theorem in the partial breaking case, it will be necessary to understand why this is so.  
 
 
-\subsection{Counting massless modes} \label{sub:subgroup}
+\subsection{Goldstone counting} \label{sub:subgroup}
 
 That the number of Goldstone modes is not uniquely determined by the pattern of symmetry breaking is of course not in contradiction with Goldstone's theorem, as illustrated e.g. by the example of the ferromagnet vs the antiferromagnet. Indeed, correctly determining the number of Goldstone modes realized in a given situation depends not just on the symmetry breaking pattern, but also on information relating to how the various charge generators act on the ground state, as nicely described in \cite{watanabe2013redundancies}.
 
@@ -262,13 +290,12 @@ However, $\kappa_c \neq 0$ does not {\it necessarily} imply that $\mmax c$ is sp
 Let then $s\leq a$ denote the smallest degree of multipole charge with nonzero compressibility, i.e. consider a situation in which $\kappa_c>0$ for all $s\leq c\leq a$, while $\kappa_c=0$ for all $c<s$. 
 Given $s$, the minimal IR Lagrangian looks schematically like 
 \be \label{generall} \mathcal{L} = \kappa_s (\partial_\tau \phi_{I_s})^2 + g_{J_{a+1}}(\partial_{J_{a-s+1}}\phi_{I_s})^2,\ee where 
-$\p_{J_{a-s+1}} \equiv \p_{j_1} \cdots \p_{j_{a-s+1}}$, and where $\phi_{I_s}$ is a field that shifts by a polynomial of degree $a-s$ under the action of $\mmax a$.\footnote{The compressibility appears as the coefficient of the time derivative term since $\p_\tau \phi_{I_s}$ is the momentum conjugate to $\phi_{I_s}$ in the quantum theory, and hence correlation functions of fluctuations in $n_s$ are determined by those of $\p_\tau \phi_{I_s}$.}  If $s=b+1$, then $\phi_{I_s}$ may develop LRO while leaving $\mmax{b}$ invariant.
+$\p_{J_{a-s+1}} \equiv \p_{j_1} \cdots \p_{j_{a-s+1}}$, and where $\phi_{I_s}$ is a field that shifts by a polynomial of degree $a-s$ under the action of $\mmax a$ (the compressibility appears as the coefficient of the time derivative term since $\p_\tau \phi_{I_s}$ is the momentum conjugate to $\phi_{I_s}$ in the quantum theory, and hence correlation functions of fluctuations in $n_s$ are determined by those of $\p_\tau \phi_{I_s}$).  If $s=b+1$, then $\phi_{I_s}$ may develop LRO while leaving $\mmax{b}$ invariant.
 
-In order for $s< b+1$ to be consistent with our assumed pattern of symmetry breaking, it must be the case that the fluctuations of the fields in \eqref{generall} are strong enough so as to prevent $\mmax {s}$ from spontanoeusly breaking. The novelty provided by multipolar symmetries is that they offer an easy way of allowing for $s$ to be smaller than $b+1$, and thus provide an easy way of realizing multiple IR theories that have the same symmetry breaking pattern, but contain different numbers of modes. This is illustrated by the examples of the theories \eqref{vector} ($s=1$) and \eqref{singlescalar} ($s=0$), which have the same symmetry breaking pattern ($b=0$) in $d=3$ and at $T>0$. 
+Note that the number of modes in the IR theory is controlled by $s$, and {\it not} by $b$. In order for $s< b+1$ to be consistent with our assumed pattern of symmetry breaking, it must be the case that the fluctuations of the fields in \eqref{generall} are strong enough so as to prevent $\mmax {s}$ from spontanoeusly breaking. The novelty provided by multipolar symmetries is that they offer an easy way of allowing for $s$ to be smaller than $b+1$, and thus provide an easy way of realizing multiple IR theories that have the same symmetry breaking pattern, but contain different numbers of modes. This is illustrated by the examples of the theories \eqref{vector} ($s=1$) and \eqref{singlescalar} ($s=0$), which have the same symmetry breaking pattern ($b=0$) in $d=3$ and at $T>0$. 
+	
 
-Our analysis here would naively imply that there are $(d+s-1 \text{ choose } s)$ massless modes, which is the number of degrees of freedom in a fully-symmetric rank-$s$ tensor. However, these modes may or may not be Goldstone modes, and other choices of symmetry-breaking field may be possible. A detailed count of independent modes will require further analysis.
-
-\subsection{Generalized Mermin-Wagner: partial multipole breaking} \label{sub:partial}
+\subsection{Generalized Mermin-Wagner: partial multipole breaking}
 
 In the previous subsection, we saw that the number of Goldstone modes in the symmetry-breaking theory is determined by the smallest degree of multipole charge $s$ such that $\kappa_s\neq0$. We now turn to determining the symmetry breaking pattern that occurs for a given choice of $s$, spatial dimension $d,$ and temperature $T$, thereby allowing us to formulate a generalized version of the Mermin-Wagner theorem for the case of partial multipole breaking. 
 
@@ -299,8 +326,11 @@ As an interesting example, consider the case where the dipolar group $(a=1)$ is 
 
 Let us now add some quenched disorder to our systems. In particular, we will consider disorder that explicitly breaks the symmetry locally but does not break the symmetry on average. Spatial disorder will also break translation and rotation symmetry, but again not on average. Of course, strong enough disorder can always destabilize the ordered phase, so will not consider that case. Weak disorder can discourage the ordered phase and raise the critical dimension at which SSB is impossible. Theorems of this type originate with Imry and Ma~\cite{ImryMa} and were proved by Aizenman and Wehr~\cite{Aizenman}.
 
-In order to calculate the
-correlation function~\cite{ImryMa} we need to calculate the response to disorder. Call the disorder field $h(x)$ and redefine $\phi(x)$ to be the variation away from the average value $\phi_0$. The relevant part of the Hamiltonian is 
+In a disordered classical system, the energy scaling argument gives a nice explanation for why the critical dimension changes. Consider the formation of a domain of linear size $L$ in an otherwise ordered phase fully breaking the maximal multipole group $\mathcal{M}^a_\max$. There are $\sim L^d$ disorder samples in the new domain. Since each sample is taken independently, the typical energy gain from forming the domain will be $\sim L^{d/2}$, by the central limit theorem. Comparing this to the cost of domain formation we calculated previously, the ordered phase will be unstable to domain nucleation when $d\le 4(a+1)$. We emphasize that we are here considering disorder that couples linearly to the order parameter. 
+
+In clean systems, the transition from classical to quantum brought down the critical dimension because the argument depended on entropy. The Imry-Ma argument only appeals to energy considerations, so the quantum critical dimension in the presence of disorder remains the same as the classical critical dimension~\cite{Vojta2013}. In disordered quantum systems, full SSB is impossible for $d\le 4(a+1)$.
+
+To reproduce this argument using a correlation function calculation~\cite{ImryMa} we need to calculate the response to disorder. Call the disorder field $h(x)$ and redefine $\phi(x)$ to be the variation away from the average value $\phi_0$. The relevant part of the Hamiltonian is 
 \begin{align}
 H &\sim \int d^dx \left[ \half K[ \phi(x)] - \phi(x) h(x) \right] \nn
 &\sim \int d^dk \left[ \half \phi_{-k} K_k \phi_k - \phi_{-k} h_k \right] \nn
