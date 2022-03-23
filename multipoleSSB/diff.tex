@@ -1,7 +1,7 @@
-\documentclass[pra,aps,twocolumn, amsfonts,amsmath,amssymb,nofootinbib,superscriptaddress]{revtex4-2}
+\documentclass[prb,aps,twocolumn, amsfonts,amsmath,amssymb,nofootinbib,superscriptaddress]{revtex4-2}
 %DIF LATEXDIFF DIFFERENCE FILE
-%DIF DEL old_sb_draft.tex                     Wed Dec  8 12:36:04 2021
-%DIF ADD exotic_symmetry_breaking_draft.tex   Wed Dec  8 12:33:22 2021
+%DIF DEL manuscript_noDW.tex   Tue Mar 22 20:36:44 2022
+%DIF ADD manuscript_DW.tex     Tue Mar 22 20:36:44 2022
 
 \usepackage{amsmath}
 \usepackage[dvipsnames]{xcolor}
@@ -132,9 +132,7 @@
 
 	
 \begin{abstract}
-Multipole symmetries are of interest both as a window on fracton physics and as a crucial ingredient in realizing new universality classes for quantum dynamics. Here we address the question of whether and when multipole symmetries can be \DIFdelbegin %DIFDELCMD < {\it %%%
-\DIFdel{spontaneously broken}%DIFDELCMD < } %%%
-\DIFdelend \DIFaddbegin \DIFadd{spontaneously broken, both }\DIFaddend in thermal equilibrium \DIFdelbegin \DIFdel{\charlie{or at zero temperature}}\DIFdelend \DIFaddbegin \DIFadd{and at zero temperature}\DIFaddend . We derive generalized Mermin-Wagner arguments for the total or partial breaking of multipolar symmetry groups and generalized Imry-Ma arguments for the robustness of such multipolar symmetry breaking to disorder. We present both general results and explicit examples. Our results should be directly applicable to quantum dynamics with multipolar symmetries and also provide a useful stepping stone to understanding the robustness of fracton phases to thermal fluctuations, quantum fluctuations, and disorder. 
+Multipole symmetries are of interest both as a window on fracton physics and as a crucial ingredient in realizing new universality classes for quantum dynamics. Here we address the question of whether and when multipole symmetries can be spontaneously broken, both in thermal equilibrium and at zero temperature. We derive generalized Mermin-Wagner arguments for the total or partial breaking of multipolar symmetry groups and generalized Imry-Ma arguments for the robustness of such multipolar symmetry breaking to disorder. We present both general results and explicit examples. Our results should be directly applicable to quantum dynamics with multipolar symmetries and also provide a useful stepping stone to understanding the robustness of fracton phases to thermal fluctuations, quantum fluctuations, and disorder. 
 \end{abstract}
 
 \date{\today}
@@ -151,16 +149,17 @@ In this work, we place generalized Mermin-Wagner and Imry-Ma constraints on the 
 
 Throughout, we consider only multipole groups where the underlying internal group is continuous and abelian. For concreteness, we will say it is $U(1)$. Multipole groups with a nonabelian underlying symmetry suffer a cascade effect where the dynamics in at least one direction must be trivial~\cite{nonabelian} and we shall not discuss them here. We note that specific examples of spontaneous symmetry breaking of multipolar symmetries have been discussed (sometimes in a dual language) in \cite{elastic1, elastic2, elastic3, elastic4, elastic5, FS1, FS2}. Our goal here is to place general constraints on when certain symmetry breaking phase transitions involving multipolar symmetries can occur. 
 
-This paper is organized as follows. In Section \ref{multipolegroup} we introduce the multipole group, \DIFaddbegin \DIFadd{and }\DIFaddend how to build \DIFdelbegin \DIFdel{multipole-invariant field theories , and the }\DIFdelend \DIFaddbegin \DIFadd{field theories invariant under it. In section \ref{sec:full_breaking} we discuss }\DIFaddend generalized Mermin-Wagner \DIFdelbegin \DIFdel{argument for total breaking of the maximal multipole symmetry. In }\DIFdelend \DIFaddbegin \DIFadd{arguments for situations in which a multipole group is spontaneously broken down to the trivial group, while in }\DIFaddend Section~\ref{sec:partial} we explore \DIFdelbegin \DIFdel{phases in which multipole symmetries are partially broken. Then, we }\DIFdelend \DIFaddbegin \DIFadd{the more subtle case where a nontrivial subgroup is preserved. This analysis allows us to construct examples where a single symmetry-breaking pattern can be described by several distinct types of Goldstone modes, as well as an example where a continuous symmetry is spontaneously broken in one dimension at $T=0$. 
-We then }\DIFaddend discuss generalized Imry-Ma arguments in the presence of quenched disorder in Section~\ref{sec:disord}. Finally, \DIFaddbegin \DIFadd{in Section~\ref{sec:example} }\DIFaddend we consider an explicit lattice model that illustrates some of \DIFdelbegin \DIFdel{these ideas in Section~\ref{sec:example} before concluding }\DIFdelend \DIFaddbegin \DIFadd{the ideas of the previous sections. We conclude }\DIFaddend with a discussion of open questions in \ref{sec:disc}.
+Many of the differences from the ordinary Mermin-Wagner theorem come from the soft dispersions of the relevant Goldstone modes. Although soft Goldstone modes exist in other models, they generically only emerge at fine-tuned points. As we will see, the multipole symmetries make the soft modes natural, in the sense that the theories do not have to be fine-tuned. In addition, in Sec.~\ref{sub:partial} we will see that there are exotic partial symmetry-breaking options that are not available in the presence of non-multipolar soft modes. 
+
+This paper is organized as follows. In Section \ref{multipolegroup} we introduce the multipole group, and how to build field theories invariant under it. In section \ref{sec:full_breaking} we discuss generalized Mermin-Wagner arguments for situations in which a multipole group is spontaneously broken down to the trivial group, while in Section~\ref{sec:partial} we explore the more subtle case where a nontrivial subgroup is preserved. This analysis allows us to construct examples where a single symmetry-breaking pattern can be described by several distinct types of Goldstone modes, as well as an example where a continuous symmetry is spontaneously broken in one dimension at $T=0$. 
+We then discuss generalized Imry-Ma arguments in the presence of quenched disorder in Section~\ref{sec:disord}. Finally, in Section~\ref{sec:example} we consider an explicit lattice model that illustrates some of the ideas of the previous sections. We conclude with a discussion of open questions in \ref{sec:disc}.
 
 \section{The multipole group}
 \label{multipolegroup}
 
-The multipole group is well-explained in Ref.~\cite{Gromov2019}. For concreteness, and since we will be interested in situations where a multipolar symmetry group is spontaneously broken, we will describe the multipole group in terms of its action on a compact scalar field \DIFdelbegin \DIFdel{$\phi(x) \approx \phi(x) + 2\pi$. }%DIFDELCMD < \ethan{are there any examples where $\phi$ is noncompact?} %%%
-\DIFdelend \DIFaddbegin \DIFadd{$\phi$, which will play the role of a Goldstone boson for the broken multipolar symmetry. We will always imagine $\phi$ as constituting the phase mode for some microscopic order parameter $\psi \sim e^{i\phi}$, with $\psi$ transforming by various $U(1)$ phases under the multipole group. }\ethan{are there any examples showing that this interpretation is too restrictive?}
+The multipole group is well-explained in Ref.~\cite{Gromov2019}. For concreteness, and since we will be interested in situations where a multipolar symmetry group is spontaneously broken, we will describe the multipole group in terms of its action on a compact scalar field $\phi$, which will play the role of a Goldstone boson for the broken multipolar symmetry. We will always imagine $\phi$ as constituting the phase mode for some microscopic order parameter $\psi \sim e^{i\phi}$, with $\psi$ transforming by various $U(1)$ phases under the multipole group. 
 
- \DIFaddend The multipole group generalizes the internal shift symmetry $\phi(x) \goesto\phi (x) +c$ by allowing a shift by some set of polynomials involving the spatial coordinates, viz. $\phi (x) \goesto \phi (x) + \lambda_\alpha P^\alpha(x)$. The variables $\lambda_\alpha$ are symmetry parameters, while $\alpha$ labels the set of polynomials $P^\alpha(x)$. These so-called polynomial shift symmetries~\cite{Griffin2015} all commute with each other. It is helpful to limit ourselves to homogeneous polynomials. We can label these as $P_a^{I_a}$, where $a$ is the degree of the polynomial and $I_a$ is an abstract index that runs over the polynomials of degree $a$.
+The multipole group generalizes the internal shift symmetry $\phi(x) \mapsto \phi (x) +c$ by allowing a shift by some set of polynomials involving the spatial coordinates, viz. $\phi (x) \mapsto \phi (x) + \lambda_\alpha P^\alpha(x)$. The variables $\lambda_\alpha$ are symmetry parameters, while $\alpha$ labels the set of polynomials $P^\alpha(x)$. These so-called polynomial shift symmetries~\cite{Griffin2015} all commute with each other. It is helpful to limit ourselves to homogeneous polynomials. We can label these as $P_a^{\alpha}$, where $a$ is the degree of the polynomial and $\alpha$ is now an index that runs over the homogeneous of degree $a$.
 
 The full structure of the multipole group comes into play when we also include spatial symmetries. For example,  translation in the $x_1$ direction will fail to commute with any polynomial shift where the polynomial is a function of $x_1$. Thus, if we want to consider a collection of polynomial shift symmetries, we must consider whether that collection closes under conjugation by translations and rotations. If it does not, we must either exclude the offending translations or rotations, or expand the set of polynomial shift symmetries. The result is a multipole symmetry group~\cite{Gromov2019}.
 
@@ -168,19 +167,19 @@ The full structure of the multipole group comes into play when we also include s
 
 Reference~\cite{Gromov2019} includes discussion of some multipole groups; we will review a few here. The simplest case is the maximal multipole group $\mathcal{M}^a_\text{max}$, which includes all shifts by polynomials of degree $a$ or less. Individual polynomials can be written as
 \begin{align}
-P_c^{I_c} = \mu^{I_c}_{i_1\dots i_c}x^{i_1}\dots x^{i_c}, \label{eqn:basis}
+P_c^{\gamma} = \mu^{\gamma}_{I_c}x^{I_c}, \label{eqn:basis}
 \end{align}
-where each  matrix  $\mu^{I_c}_{i_1\dots i_c}$ is fully symmetric and $c\le a$. This group also includes all translations and rotations.
+where $\gamma$ is an index that runs over polynomials of degree $c$\DIFaddbegin \DIFadd{, }\DIFaddend and $c\le a$. The composite index $I_c = \{i_1,\dots,i_c\}$  expands as $x^{I_c}=x^{i_1}\cdots x^{i_c}$, and similarly for $\partial_{I_c}$. Each  matrix  $\mu^{\gamma}$ is fully symmetric on its $I_c$ indices. This group also includes all translations and rotations. We will use $\mmax{-1}$ to denote the rotations and translations without any internal symmetry.
 
 An example of a multipole group that contains all translations and rotations but is \emph{not} the maximal multipole group is the group generated by shifts of the form
 \begin{align}
-\phi \goesto \phi + \lambda_0 P_0^0 + \lambda_{i} P^{i}_1 + \lambda_{I_2} P^{I_2}_2,
+\phi \goesto \phi + \lambda_0 P_0^0 + \lambda_{i} P^{i}_1 + \lambda_{\beta} P^{\beta}_2,
 \end{align}
 where the degree-0 polynomial is $P_0^0=1$. The other polynomials are
 \begin{align}
-P_1^{i} = x^i,\quad \quad P_2^{I_2} &= \mu^{I_2}_{ij} x^i x^j,
+P_1^{i} = x^i,\quad \quad P_2^{\beta} &= \mu^{\beta}_{ij} x^i x^j,
 \end{align}
-where $\mu^{I_2}$ are a basis for the rank-2 traceless symmetric $d\times d$ matrices. Let us call this group $\mathcal{M}^2_{\text{sym}}$. Recall that the maximal quadrupole group $\mathcal{M}^2_{\text{max}}$ is already only built from symmetric matrices $\mu$. The tracelessness condition thus only removes one polynomial from the set. 
+where $\mu^{\beta}$ are a basis for the traceless symmetric $d\times d$ matrices. Let us call this group $\mathcal{M}^2_{\text{sym}}$. Recall that the maximal quadrupole group $\mathcal{M}^2_{\text{max}}$ is already only built from symmetric matrices $\mu$. The tracelessness condition thus only removes one polynomial from the set. 
 
 This set of polynomial shift symmetries is compatible with all rotations because no rotation will generate a traceful matrix from a traceless one. The set of symmetric matrices, seen as a representation of the group of rotations, decomposes into two independent irreducible representations. One of these is the set of traceless matrices while the other is the single matrix $\delta_{ij}$. In fact, the set of polynomial shift symmetries consisting of constant and linear shifts along with shifts of the form $\delta \phi \propto x^ix^i$ is also compatible with all rotations. We could call this group $\mathcal{M}^2_\text{tr}$.
 
@@ -215,16 +214,14 @@ The Haah multipole group thus has a product structure, $\mathcal{M}_\text{Haah} 
 \subsection{Multipole field theories} \label{sub:field}
 
 We can now consider building IR field theories for phases in which a multipolar symmetry is completely spontaneously broken, with no residual unbroken subgroup. Reference~\cite{Gromov2019} describes the process in detail, so in the following we will be somewhat succinct. 
-We will continue to write things down in terms of the compact scalar $\phi$, which (\DIFaddbegin \DIFadd{at }\DIFaddend in the cases for which SSB is not preempted by strong fluctuations) is to be viewed as the Goldstone for the sponatneously broken symmetry. 
-% References~\cite{Griffin2015, Gromov2019} discuss quantum field theories where configurations are weighted by an action. We will also want to consider thermal field theories with Hamiltonian descriptions, so we will abstractly discuss ``kinetic terms" in this section.
+We will continue to write things down in terms of the compact scalar $\phi$, which (at least in the cases for which SSB is not preempted by strong fluctuations) is to be viewed as the Goldstone for the sponatneously broken symmetry. 
 
 Since we are only interested in the low-energy physics of the putative symmetry-broken phase, constructing an appropriate IR field theory amounts to nothing more than constructing an appropriate kinetic term for $\phi$. 
-To find a kinetic term invariant under a given multipole group $\mathcal{M}$, we need to find operators $D$ built out of spatial derivatives that annihilate all the polynomials in $\mathcal{M}$. If $a_\text{max}$ is the highest degree of the polynomials in $\mathcal{M}$, the simplest derivative operators which generically do the job are of the form \DIFaddbegin \ethan{may or may not want to switch to the composite index notation $q^{I_{a_{\rm max}+1}} \p_{I_{a_{\rm max}+1}}$ employed later}
-\DIFaddend \begin{align}
-D = q^{i_1\dots i_{a_\text{max}+1}}\partial_{i_1}\dots \partial_{i_{a_\text{max}+1}},
+To find a kinetic term invariant under a given multipole group $\mathcal{M}$, we need to find operators $D$ built out of spatial derivatives that annihilate all the polynomials in $\mathcal{M}$. If $a_\text{max}$ is the highest degree of the polynomials in $\mathcal{M}$, the simplest derivative operators which generically do the job are of the form 
+\begin{align}
+D = q^{I_{a_{\rm max}+1}} \p_{I_{a_{\rm max}+1}},
 \end{align}
-for some symmetric tensor $q^{i_1\dots i_{a_\text{max}+1}}$. Although it is not generically possible to do so~\cite{Gromov2019}, we can sometimes find a set of $D_\alpha$ ($\alpha$ is an abstract index) with $s\le a_{\text{max}}$, where $a_\text{max}$ is the highest degree of the polynomials. In this case, the effective field theory will be invariant under some non-maximal multipole symmetry.
-% We say that $D$ is order-$s$ if the maximum number of derivatives appearing in $D$ is $s$. 
+for some symmetric tensor $q^{I_{a_{\rm max}+1}}$. Although it is not generically possible to do so~\cite{Gromov2019}, we can sometimes find a set of $D_\alpha$ ($\alpha$ is an abstract index) with $s\le a_{\text{max}}$, where $a_\text{max}$ is the highest degree of the polynomials. In this case, the effective field theory will be invariant under some non-maximal multipole symmetry. 
 
 Writing the invariant derivative operators as $D_\alpha$, the most general kinetic term is ~\cite{Gromov2019} 
 \begin{align}
@@ -233,39 +230,49 @@ K[\phi(x)] &= g_{\alpha\beta} (D_\alpha \phi) (D_\beta \phi)
 for some symmetric tensor $g_{\alpha\beta}$.
 We will often write the Fourier transform of the kinetic term as $\phi_{-k} K_k \phi_k$.  Requiring some spatial symmetries restricts the choices of $g_{\alpha \beta}$. For the maximal multipole group, enforcing all rotation symmetries results in the kinetic term
 \begin{align}
-K_a[\phi(x)] &= (\partial_{i_1}\dots \partial_{i_{a+1}} \phi) (\partial_{i_1} \dots \partial_{i_{a+1}} \phi),
+K_a[\phi(x)] &= (\partial_{I_{a+1}} \phi) (\partial_{I_{a+1}} \phi),
 \end{align}
 which is the kinetic terms studied in Ref.~\cite{Griffin2015}. 
 
 For $a>0$, $K_a$ can be split into multiple terms while still remaining rotationally invariant. For example, the kinetic term for $\mathcal{M}^1_\max$ is 
 \begin{align}
-K_1[\phi(x)] = g_1 (\partial^2\phi)^2 + g_2 \sum_{ij} (\partial_i \partial_j \phi)^2.
+K_1[\phi(x)] = g_1 \big(\sum_{i} \partial_i \partial_i \phi\big)^2 + g_2 \sum_{i \ne j} (\partial_i \partial_j \phi)^2.
 \end{align}
-For the special cases of $g_2=0$ or $g_2=-g_1$, the symmetry group expands to $\mathcal{M}^2_\text{sym}$ or $\mathcal{M}^2_\text{tr}$, respectively. However, for generic $g_1,g_2$ the symmetry group is $\mathcal{M}^1_\max$. Similar statements can be made for larger $a$.
+For the special cases of $g_2=0$ or $g_1=0$, the symmetry group expands to $\mathcal{M}^2_\text{sym}$ or $\mathcal{M}^2_\text{tr}$, respectively. However, for generic $g_1,g_2$ the symmetry group is $\mathcal{M}^1_\max$. Similar statements can be made for larger $a$.
+
+Although we have been discussing field theories in the continuum, we will often care about theories that emerge from the low-energy degrees of freedom of a lattice model. In ordinary theories with monopole and lattice rotation symmetries, the lowest-order derivative term that can emerge from the lattice theory is $(\partial_i \phi)^2$, which is symmetric under the larger group of continuous rotations. Any terms that are not invariant under the continuous rotation group are irrelevant, so the continuous symmetry emerges. For multipole symmetries, leading-order terms may contain lattice anisotropies, so that the continuous rotation group does not emerge. For this reason we will only require that $\mmax{a}$ contain discrete rotation symmetries.
 
 Finally, some of these multipole symmetries can be gauged to arrive at effective field theories for fracton phases. Of course, after gauging the theory will have gapless excitations due to the U(1) symmetry, but they can be Higgsed to arrive at a gapped phase. This is the sense in which the Haah group mentioned earlier corresponds to a field theory for Haah's code~\cite{BB}. See Ref.~\cite{BB, Gromov2019} for the full story. 
 
-\DIFdelbegin \subsection{\DIFdel{Generalized Mermin-Wagner argument}}
-%DIFAUXCMD
-\addtocounter{subsection}{-1}%DIFAUXCMD
-\DIFdelend \DIFaddbegin \section{\DIFadd{Generalized Mermin-Wagner: full multipole breaking}}\label{sec:full_breaking}
-\DIFaddend 
+\section{Generalized Mermin-Wagner: full multipole breaking}\label{sec:full_breaking}
 
-We are now ready to describe the generalized Mermin-Wagner argument \DIFdelbegin \DIFdel{for }\DIFdelend \DIFaddbegin \DIFadd{in the case where }\DIFaddend an arbitrary maximal multipole group \DIFaddbegin \DIFadd{is spontaneously broken down to the trivial subgroup}\DIFaddend . This already appears in Ref.~\cite{Griffin2015}, so we are simply reviewing it here in preparation for the more generic cases to follow. Here, we will discuss both thermal and $T=0$ systems.
+We are now ready to describe the generalized Mermin-Wagner argument in the case where an arbitrary maximal multipole group is spontaneously broken down to the trivial subgroup. This already appears in Ref.~\cite{Griffin2015}, so we are simply reviewing it here in preparation for the more generic cases to follow. Here, we will discuss both thermal and $T=0$ systems\DIFdelbegin \DIFdel{, and diagnose }\DIFdelend \DIFaddbegin \DIFadd{.  We will start with a heuristic argument in terms of domain wall energies before discussing a more careful diagnosis of }\DIFaddend spontaneous symmetry breaking \DIFdelbegin \DIFdel{using the divergence }\DIFdelend \DIFaddbegin \DIFadd{in terms }\DIFaddend of correlation functions.
 
-Consider first a clean classical system at $T>0$ with a spontaneously broken maximal multipole symmetry of degree $a$.
+\DIFaddbegin \DIFadd{Consider first a clean system at $T>0$ with a spontaneously broken maximal multipole symmetry of degree $a$.
 Then the kinetic term is proportional to 
-\begin{align}
-K[\phi(x)] = (\partial_{i_1} \dots \partial_{i_{a+1}} \phi)^2. \label{eqn:adisp}
-\end{align} 
-\DIFdelbegin %DIFDELCMD < \ethan{really it's $\sim e^{i\phi}$ which is the order parameter}
-%DIFDELCMD < %%%
-\DIFdelend Now consider nucleating domains of linear size $L$ in which the expectation value of the order parameter --- namely $\langle e^{i\phi}\rangle$ --- varies by an amount of order 1. Since the order parameter is continuous there will be a thick domain ``wall" over which the order parameter changes gradually from its value in the background phase to its value in the domain. The thickness will be of order $L$.
-Equation~\ref{eqn:adisp} tells us the  energy cost of the field changing its value will be minimized if it varies as a polynomial with degree $a+1$. In that case the energy density will scale as $K_k \sim k^{2(a+1)} \sim L^{-2(a+1)}$. Integrating that energy density over a region of size $L$ gives a total energy cost to nucleating domains of $L^{d-2(a+1)}$.
+}\begin{align}
+\DIFadd{K}[\DIFadd{\phi(x)}] \DIFadd{= (\partial_{I_{a+1}} \phi)^2. \label{eqn:adisp}
+}\end{align} 
+\DIFadd{Symmetry breaking field configurations will be of the form $\phi(x) = a^0 + a^1_ix^i + \dots+ a^a_{I_a}x^{I_a}$, where $a^b$ are symmetric rank-$b$ tensors. This ensures there is no kinetic energy.  
+}
 
+\DIFadd{Now consider nucleating domains of linear size $L$, in which the field takes on a different configuration $\phi(x) = c^0 + c^1_ix^i + \dots + c^a_{I_a}x^{I_a}$. The difference in the coefficients $c^b_{I_b}-a^b_{I_b}$ will be of order $L^{-b}$, as that is the natural scale introduced by the presence of the domain.
+There is a $d$-dimensional region surrounding the domain, where the coefficients in $\phi(x)$ smoothly change their values over a length $L$. We will call this the thickened domain wall. 
+}
+
+\DIFadd{Let us specialize to $d=1$ to simplify the analysis of the thickened domain wall. In higher dimensions, for large enough thickened domain walls, the coefficients of $\phi(x)$ will locally appear to only vary in one direction, so that the analysis reduces to the $d=1$ problem. In the thickened domain wall, we have 
+}\begin{align}
+\DIFadd{\phi(x) = b^0(y) + b^1(y) y + \dots + b^a(y) y^a,
+}\end{align}
+\DIFadd{where the $b^b(y)$ are polynomials of the dimensionless parameter $y=x/L$, with degrees constrained by the equations of motion coming from~}\eqref{eqn:adisp}\DIFadd{. Each derivative in~}\eqref{eqn:adisp} \DIFadd{pulls down a factor of $L^{-1}$, so the energy density will scale as $L^{-2(a+1)}$.
+}
+
+\DIFadd{When we go back to $d$ dimensions, the energy density remains unchanged. We can integrate the density over the entire thickened domain wall to see that the total energy is $E\sim L^{d-2(a+1)}$.
 In clean systems there is no energy gain from domain nucleation. When $d\le2(a+1)$, the energy cost is bounded, so the entropy gain favors domain creation. Thus, ordered phases are unstable and SSB cannot occur for $d\le2(a+1)$.
+}
 
-We can also reproduce this argument by considering correlation functions. As a warm-up, consider the standard case where a monopole U(1) symmetry is spontaneously broken, leading to a Goldstone boson $\phi(x)$. The correlation function
+\DIFadd{We can recover the result of this heuristic argument in a more formal way by considering correlation functions.
+}\DIFaddend As a warm-up, consider the standard case where a monopole U(1) symmetry is spontaneously broken, leading to a Goldstone boson $\phi(x)$. The correlation function
 \begin{align}
 C(x) = \left\langle \phi(x) \phi(0) \right\rangle = \int \frac{d^dk}{(2\pi)^d} \frac{e^{i k \cdot x}}{k^2}, 
 \end{align}
@@ -277,13 +284,13 @@ C \sim \int \frac{d^dk}{K_k} \sim \int \frac{d^dk}{k^{2(a+1)}}, \label{eqn:corre
 \end{align}
 which diverges for $d\le2(a+1)$. As before, we interpret the divergence of the correlation function as a sign that the symmetry cannot be spontaneously broken. This allows us to reproduce our scaling argument that SSB of the multipole group $\mathcal{M}^a_\max$ cannot occur for $d\le2(a+1)$.
 
-If we look at the zero temperature setting, the energy scaling no longer tells us where the critical dimension is. This is because even when there is no energy cost to forming domains, there is no entropy gain. Instead, quantum fluctuations must be the motivation for domain nucleation. To find the quantum critical dimension, we calculate the correlation function by way of the (imaginary-time) IR Lagrangian 
+In the zero temperature setting, \DIFaddbegin \DIFadd{the energy scaling no longer tells us where the critical dimension is. This is because even when there is no energy cost to forming domains, there is no entropy gain. Instead, quantum fluctuations must be the motivation for domain nucleation. To find the quantum critical dimension, }\DIFaddend we calculate the correlation function by way of the (imaginary-time) IR Lagrangian 
 \begin{align}
      \mathcal{L}[\phi] = (\partial_\tau\phi)^2 + K[\phi].
 \end{align} 
 This gives 
 \begin{align}
-\DIFaddbegin \label{tzerocorr}\DIFaddend C(x) = \left\langle \phi(x) \phi(0) \right\rangle &\sim \int \frac{d\omega d^dk}{\omega^2 + k^{2( a + 1 )}},
+\label{tzerocorr}C(x) = \left\langle \phi(x) \phi(0) \right\rangle &\sim \int \frac{d\omega d^dk}{\omega^2 + k^{2( a + 1 )}},
 \end{align}
 which now diverges at $d\le a+1$~\cite{Griffin2015}, where $d$ is the number of spatial dimensions. We have halved the critical dimension, so that SSB cannot occur at $d\le a+1$. Note that the dynamical critical exponent in these theories is $z = a+1$, so that as expected, the classical and quantum critical dimensions are related by $d_\text{cl} = d_\text{q} + z$.
 
@@ -292,7 +299,7 @@ Furthermore, the structure of the quantum correlation function,
 C &\sim \int \frac{d\omega d^dk}{\omega^2 + K_k}\nn
 &\sim \int \frac{d^dk}{\sqrt{K_k}},
 \end{align}
-suggests that, at least in some broad class of theories, the quantum critical dimension will be half the classical critical dimension. This is not true in general, though, as we will show for theories with quenched disorder.
+suggests that, at least in some broad class of theories, the quantum critical dimension will be half the classical critical dimension. This is not true in general, though, as we will show.
 
 \subsection{Non-maximal multipole group} \label{sub:nonmax}
 
@@ -301,7 +308,7 @@ We can also consider the fate of symmetry breaking for multipole groups other th
 For concreteness, we will consider some examples. First, recall the group $\mathcal{M}^2_\text{sym}$ from Sec.~\ref{sub:examples}. The group contains polynomials of degree 2. However, since the polynomials are all traceless, the most relevant derivative is $D = \sum_i \partial^2_i$.  We can immediately see the dispersion is $(k^2)^2$, so that the critical dimension is $d_\cl = 4$ or $d_\q = 2$.
 
 We can also consider an anisotropic multipole group. 
-Let the conserved charges be the monopole moment and $d_2$ components of the dipole moment. Then the dispersion will be $k^4 + p^2$, where $k$ has $d_2$ components, $p$ has $d_1$ components, and $d = d_1+d_2$. Classically, the correlation function is
+Let the conserved charges be the monopole moment and $d_2$ components of the dipole moment. Then the dispersion will be $k^4 + p^2$, where $k$ has $d_2$ components, $p$ has $d_1$ components, and $d = d_1+d_2$. At nonzero temperature, the correlation function is
 \begin{align}
 C &\sim \int \frac{d^{d_2} k \, d^{d_1} p}{k^4 + p^2}\nn
 &\sim \int x^{d_2/2 -1} p^{d_1-1} \frac{dx\, dp}{x^2 +p^2} \nn
@@ -310,17 +317,19 @@ C &\sim \int \frac{d^{d_2} k \, d^{d_1} p}{k^4 + p^2}\nn
 where $q^2 = x^2 + p^2 = k^4 + p^2$. 
 If $d_1=2$ the symmetry can be broken for any $d_2>0$, and if $d_1=1$ then $d_2=2$  is critical. Of course, if $d_1=0$ we have an isotropic quartic dispersion and $d=d_2=4$ is critical. 
 
-We can recover this result in  the energy-scaling argument. Since the system is anisotropic, the domains will have different sizes in different directions. Consider forming a domain of linear size $L_p$ in the  direction with quadratic dispersion and $L_k$ in the quartic direction. When the gradient of the order parameter is in the quadratic direction, the order parameter has to change over a length $L_p$ so the energy density is $L_p^{-2}$. Similarly, when the order parameter is changing in the quartic direction its energy density is $L_k^{-4}$. 
+\DIFaddbegin \DIFadd{We can recover this result in  the energy-scaling argument. Since the system is anisotropic, the domains will have different sizes in different directions. Consider forming a domain of linear size $L_p$ in the  direction with quadratic dispersion and $L_k$ in the quartic direction. When the gradient of the order parameter coefficients is in the quadratic direction, the coefficients have to change over a length $L_p$ so the energy density is $L_p^{-2}$. Similarly, when the coefficients are changing in the quartic direction its energy density is $L_k^{-4}$. 
+}
 
-Both of these energy densities will be integrated over domain ``walls" with volume $L_k^{d_2} L_p^{d_1}$.
+\DIFadd{Both of these energy densities will be integrated over domain ``walls" with volume $L_k^{d_2} L_p^{d_1}$.
 As a result, the total energy cost is
-\begin{align}
-E &\sim L_k^{d_2} L_p^{d_1-2} + L_k^{d_2-4} L_p^{d_1},
-\end{align}
-so that $L_p \sim L_k^2$ to make the terms match, and $E\sim L_p^{d_2/2+d_1-2}$. Recall that when $E$ does not increase for larger domains, the entropy gain will cause them to nucleate, destroying the ordered phase.
+}\begin{align}
+\DIFadd{E }&\DIFadd{\sim L_k^{d_2} L_p^{d_1-2} + L_k^{d_2-4} L_p^{d_1},
+}\end{align}
+\DIFadd{so that $L_p \sim L_k^2$ to make the terms match, and $E\sim L_p^{d_2/2+d_1-2}$. Recall that when $E$ does not increase for larger domains, the entropy gain will cause them to nucleate, destroying the ordered phase.
 We see that the critical dimension $d= d_2 + d_1$ can be 2, 3, or 4, depending on how many directions have quadratic or quartic dispersions.
+}
 
-The quantum correlation function behaves as
+\DIFaddend The $T=0$ correlation function behaves as
 \begin{align}
 C &\sim \int \frac{d\omega d^{d_2} k \, d^{d_1} p}{\omega^2 + k^4 + p^2}\nn
 &\sim \int k^{d_2 - 2} p^{ (d_1-1)} \frac{k\,dk\, dp}{\sqrt{k^4 + p^2}} \nn
@@ -333,283 +342,91 @@ The previous analysis suggests a procedure for finding the critical dimension in
 \begin{align}
 d_\eff = \sum_n \frac{d_n}{n}.
 \end{align}
-In a classical system, we then conclude that SSB cannot occur if $d_\eff\le 2$, while in a quantum system the critical dimension is $d_\eff = 1$.
+For $T>0$, we then conclude that SSB cannot occur if $d_\eff\le 2$, while at $T=0$ the critical dimension is $d_\eff = 1$.
 
 We should emphasize that the statements in this subsection were framed in terms of the dispersion of the Goldstone modes rather than the structure of the symmetry group. It is always possible to find the dispersion given the multipole symmetry group, but it may require some basis changes (as in the Haah multipole group).
 
 \section{Partial breaking of multipole symmetries} \label{sec:partial}
 
-In \DIFaddbegin \DIFadd{the previous section we studied situations in which a multipole group was fully broken. In }\DIFaddend this section we \DIFdelbegin \DIFdel{examine }\DIFdelend \DIFaddbegin \DIFadd{turn our attention to examining }\DIFaddend what happens when \DIFdelbegin \DIFdel{a multipolar symmetry is spontaneously broken to a subgroup. Studying this problem will reveal a few ways in which our general expectations for symmetry breaking and universality need to be revised in the context of multipolar symmetries. 
-}%DIFDELCMD < 
+In the previous section we studied situations in which a multipole group was fully broken. In this section we turn our attention to examining what happens when the symmetry breaking is incomplete, with a nontrivial subgroup remaining unbroken. A simple example that illustrates why this problem is nontrivial is the following. 
 
-%DIFDELCMD < %%%
-\subsection{\DIFdel{\note{Breaking to a subgroup}}} %DIFAUXCMD
-\addtocounter{subsection}{-1}%DIFAUXCMD
-%DIFDELCMD < \label{sub:subgroup}
-%DIFDELCMD < 
-
-%DIFDELCMD < %%%
-\DIFdel{In the previous section we assumed we had an order parameter field that fully broke the multipole symmetry. Let us now consider the case where the order parameter breaks the symmetry from the original group $G$ to some subgroup $H$. For simplicity, we will let $G$ be the maximal multipole group $\mathcal{M}^{a}_\text{max}$ and will let $H$ be $\mathcal{M}^b_\text{max}$, with $b<a$}\DIFdelend \DIFaddbegin \DIFadd{the symmetry breaking is incomplete, with a nontrivial subgroup remaining unbroken. A simple example that illustrates why this problem is nontrivial is the following}\DIFaddend . 
-
-\DIFdelbegin \DIFdel{As an illustrative example, consider the case when }\DIFdelend \DIFaddbegin \DIFadd{Consider a situation in which }\DIFaddend a dipolar symmetry \DIFaddbegin \DIFadd{$\mcm^1_{\rm max}$ }\DIFaddend is spontaneously broken to \DIFdelbegin \DIFdel{the monopolar subgroup , so that $a=1$ and $b=0$}\DIFdelend \DIFaddbegin \DIFadd{its monopolar subgroup $\mcm^0$, and momentarily specialize to the case of $d=3$ and $T>0$}\DIFaddend . In the spirit of Goldstone's theorem, the most \DIFdelbegin \DIFdel{natural }\DIFdelend \DIFaddbegin \DIFadd{naive }\DIFaddend thing to do \DIFaddbegin \DIFadd{when analyzing the symmetry broken phase }\DIFaddend would be to write down an action involving a set of \DIFaddbegin \DIFadd{$d=3$ Goldstone }\DIFaddend fields $\theta_j$\DIFdelbegin \DIFdel{which transform }\DIFdelend \DIFaddbegin \DIFadd{, with $\t_j$ transforming }\DIFaddend linearly under the dipolar part of the symmetry group, but \DIFdelbegin \DIFdel{which are }\DIFdelend \DIFaddbegin \DIFadd{remaining }\DIFaddend invariant under the \DIFdelbegin \DIFdel{remaining monopole subgroup(i.e. }\DIFdelend \DIFaddbegin \DIFadd{unbroken monopole subgroup, so that $\theta_j \mapsto \theta_j + \beta_j$ }\DIFaddend under a transformation parameterized by $P(x) = \alpha + \beta_j x^j$\DIFdelbegin \DIFdel{, $\theta_j \mapsto \theta_j + \beta_j$)}\DIFdelend . In this case, the \DIFdelbegin \DIFdel{minimal IR action }\DIFdelend \DIFaddbegin \DIFadd{IR field theory }\DIFaddend for the putative symmetry-breaking phase would be \DIFdelbegin \begin{align*}
-    \DIFdel{\mathcal{L}= \sum_j  (\partial_\tau \theta_j)^2 + \sum_{i,j} g_{ij} (\partial_i \theta_j)^2.
-}\end{align*}%DIFAUXCMD
-\DIFdelend \DIFaddbegin \DIFadd{of the form 
-}\begin{align}
-\DIFadd{\label{vector} \mathcal{L}= \sum_j  (\partial_\tau \theta_j)^2 + \sum_{i,j} g_{ij} (\partial_i \theta_j)^2.
-}\end{align}\DIFaddend 
-\DIFdelbegin %DIFDELCMD < 
-
-%DIFDELCMD < %%%
-\DIFdel{By calculating correlation functions of the $\theta_j$ fields using the above action, we would conclude that SSB would be possible only for $d>1$ at $T=0$, and $d>2$ }\DIFdelend \DIFaddbegin \DIFadd{As we are working in $d=3$ and }\DIFaddend at $T>0$\DIFdelbegin \DIFdel{. However, this argument does not actually give the correct lower critical dimension. 
-To see this }\DIFdelend \DIFaddbegin \DIFadd{, the theory }\eqref{vector} \DIFadd{indeed has SSB for the dipole symmetry, with $e^{i\t_j}$ developing long-range order. 
-}
-
-\DIFadd{The theory }\eqref{vector} \DIFadd{is not the only possibility consistent with this pattern of symmetry breaking, however. Indeed}\DIFaddend , consider instead the \DIFdelbegin \DIFdel{single }\DIFdelend scalar field theory 
+Consider a situation in which a dipolar symmetry $\mcm^1_{\rm max}$ is spontaneously broken to its monopolar subgroup $\mcm^0_{\rm max}$, and specialize to the case of $d=3$ and $T>0$. In the spirit of Goldstone's theorem, the most naive thing to do when analyzing the symmetry broken phase would be to write down an action involving a set of $d=3$ Goldstone fields $\theta_j$, with $\t_j$ transforming linearly under the dipolar part of the symmetry group, but remaining invariant under the unbroken monopole subgroup, so that $\theta_j \mapsto \theta_j + \beta_j$ under a transformation parameterized by $P(x) = \alpha + \beta_j x^j$. In this case, the IR field theory for the putative symmetry-breaking phase would be of the form 
 \begin{align}
-\DIFaddbegin \label{singlescalar}    \DIFaddend \mathcal{L} = (\partial_\tau\phi)^2 + g_{ij} (\partial_i\partial_j\phi)^2\DIFaddbegin \DIFadd{, }\DIFaddend \end{align}
+\label{vector} \mathcal{L}= \sum_j  (\partial_\tau \theta_j)^2 + \sum_{i,j} g_{ij} (\partial_i \theta_j)^2.
+\end{align}
+As we are working in $d=3$ and at $T>0$, the theory \eqref{vector} indeed has SSB for the dipole symmetry, with $e^{i\t_j}$ developing long-range order. 
+
+Of course, such a Goldstone field would break continuous rotation symmetries, but recall that we are only requiring that each maximal multipole group contain lattice rotation symmetries. We can then say that the theory~\eqref{vector} spontaneously breaks $\mmax{1}$ to $\mmax{0}$, in $d=3$ and at $T>0$.
+
+The theory \eqref{vector} is not the only possibility consistent with this pattern of symmetry breaking, however. Indeed, consider instead the scalar field theory 
+\begin{align}
+\label{singlescalar}    \mathcal{L} = (\partial_\tau\phi)^2 + g_{ij} (\partial_i\partial_j\phi)^2, \end{align}
 where $\phi$ transforms under the symmetry as $\phi \mapsto \phi + \alpha + \beta_jx^j$. 
- In \DIFdelbegin \DIFdel{a classical system at $T>0$ the correlation functions of this operator are
-}\begin{align*}
-\DIFdel{\left\langle \partial_i\phi(x) \partial_j\phi(0) \right\rangle }&\DIFdel{\sim \delta_{ij} \int \frac{d^dk\, k^2}{k^4},
-}\end{align*}%DIFAUXCMD
-\DIFdel{so that the critical dimension is $d=2$, as in the standard Mermin-Wagner theorem for monopole symmetries. This allows us to interpret the dipole charges of the monopole symmetry as monopole charges of the dipole part of the }\DIFdelend \DIFaddbegin \DIFadd{the scalar theory }\eqref{singlescalar}\DIFadd{, the analysis of section \ref{sec:full_breaking} shows that the monopole symmetry is }{\it \DIFadd{not}} \DIFadd{spontaneously broken, with $e^{i\phi}$ possessing short-ranged correlation functions. However, the dipolar symmetry does indeed have SSB, and it is easy to check that the operators $e^{i\p_j\phi}$ --- which transform under the }\DIFaddend symmetry \DIFdelbegin \DIFdel{group.
-}%DIFDELCMD < 
-
-%DIFDELCMD < %%%
-\DIFdel{However, this interpretation does not hold for  quantum systems.The correlation function scales as
-}\begin{align*}
-\DIFdel{\left\langle \partial_i\phi(x) \partial_j\phi(0) \right\rangle }&\DIFdel{\sim \delta_{ij} \int \frac{d\omega\, d^dk\, k^2}{\omega^2 + k^4}\nn
-}&\DIFdel{= \delta_{ij} \int \frac{d^dk\, k^2}{k^2},
-}\end{align*}%DIFAUXCMD
-\DIFdel{so that SSB is possible in any $d>0$. Thus, we cannot view this as analogous to ordinary monopole symmetry breaking}\DIFdelend \DIFaddbegin \DIFadd{in the same way as $e^{i\t_j}$ --- have long-range order. Thus in this case, the two theories }\eqref{vector} \DIFadd{and }\eqref{singlescalar} \DIFadd{exhibit the same pattern of symmetry breaking, despite having a different number of Goldstone modes.}\footnote{\DIFadd{We will refer to the mode $\phi$ in the theory }\eqref{singlescalar} \DIFadd{as the ``Goldstone mode'' of the spontaneously broken dipole symmetry, since it is the only mode in the theory. Note however that it is $\p_j\phi$ (and not $\phi$ itself) which transforms under the symmetry action in the way expected of Goldstone bosons.}} \DIFadd{In order to formulate the correct version of the Mermin-Wagner theorem in the partial breaking case, it will be necessary to understand why this is so}\DIFaddend .  
+ In the scalar theory \eqref{singlescalar}, the analysis of section \ref{sec:full_breaking} shows that the monopole symmetry is {\it not} spontaneously broken, with $e^{i\phi}$ possessing short-ranged correlation functions. However, the dipolar symmetry does indeed have SSB, and it is easy to check that the operators $e^{i\p_j\phi}$ --- which transform under the symmetry in the same way as $e^{i\t_j}$ --- have long-range order. Thus in this case, the two theories \eqref{vector} and \eqref{singlescalar} exhibit the same pattern of symmetry breaking, despite having a different number of Goldstone modes.\footnote{We will refer to the mode $\phi$ in the theory \eqref{singlescalar} as the ``Goldstone mode'' of the spontaneously broken dipole symmetry, since it is the only mode in the theory. Note however that it is $\p_j\phi$ (and not $\phi$ itself) which transforms under the symmetry action in the way expected of Goldstone bosons.} In order to formulate the correct version of the Mermin-Wagner theorem in the partial breaking case, it will be necessary to understand why this is so.  
 
 
-%DIF < We then recognize that these fundamental dipoles, which are of course the dipole charges of the monopole symmetry, are also the monopole charges of the dipole symmetry.  We should then expect symmetry breaking cannot occur for $d\le 2$ classically or $d\le 1$ quantum mechanically.
-\DIFaddbegin \subsection{\DIFadd{Goldstone counting}} \label{sub:subgroup}
-\DIFaddend 
+\subsection{Counting massless modes} \label{sub:subgroup}
 
-\DIFdelbegin \DIFdel{It is interesting to note that condensing an object that carries dipole charge must break rotation symmetry . In Sec. ~\ref{sec:example} we show how to break the dipole symmetry while preserving a lattice rotation symmetry by considering multiple species of dipole. We are not aware of a way to condense a dipole while preserving continuous rotation symmetry }\DIFdelend \DIFaddbegin \DIFadd{That the number of Goldstone modes is not uniquely determined by the pattern of symmetry breaking is of course not in contradiction with Goldstone's theorem, as illustrated e.g. by the example of the ferromagnet vs the antiferromagnet. Indeed, correctly determining the number of Goldstone modes realized in a given situation depends not just on the symmetry breaking pattern, but also on information relating to how the various charge generators act on the ground state, as nicely described in \mbox{%DIFAUXCMD
-\cite{watanabe2013redundancies}}\hspace{0pt}%DIFAUXCMD
-}\DIFaddend .
+That the number of Goldstone modes is not uniquely determined by the pattern of symmetry breaking is of course not in contradiction with Goldstone's theorem, as illustrated e.g. by the example of the ferromagnet vs the antiferromagnet. Indeed, correctly determining the number of Goldstone modes realized in a given situation depends not just on the symmetry breaking pattern, but also on information relating to how the various charge generators act on the ground state, as nicely described in \cite{watanabe2013redundancies}.
 
-\DIFdelbegin \DIFdel{In more generality, for $G = \mathcal{M}^{a}_\text{max}$ and $H = \mathcal{M}^b_\text{max}$ there will be a charged operator $\partial_{i_1} \dots \partial_{i_{b+1}}\phi$ with a dispersion as in Eqn.~\ref{eqn:adisp}. Because $G$ is a maximal multipole group, we can still write the polynomials as in Eqn.~\ref{eqn:basis}. 
-Recall that $P_c^{I_c}$ is a degree-}\DIFdelend \DIFaddbegin \DIFadd{A general formal framework for understanding the counting of Goldstone modes in the present context can be developed by following the analysis of \mbox{%DIFAUXCMD
-\cite{watanabe2013redundancies}}\hspace{0pt}%DIFAUXCMD
-, but here we will simply content ourselves with a heuristic physical argument. For simplicity, we will focus on systems in which the total symmetry group $\mcm_{\rm max}^a$ is spontaneously broken down to some nontrivial subgroup. 
-}
+A general formal framework for understanding the counting of Goldstone modes in the present context can be developed by following the analysis of \cite{watanabe2013redundancies}, but here we will simply content ourselves with a heuristic physical argument. For simplicity, we will focus on systems in which the total symmetry group $\mcm_{\rm max}^a$ is spontaneously broken down to some nontrivial subgroup $\mcm_{\rm max}^b$. As mentioned previously, $\mmax{b}$ might only contain discrete rotation symmetries, so we will only concern ourselves with the spontaneous breaking of the polynomial generators. We will indicate that a generator corresponding to a polynomial of degree $c$ is spontaneously broken by saying that $\mmax{c}$ is broken.
 
-\DIFadd{Let us define the compressibilities $\kappa_c$ by 
-}\be \label{kappadef} \DIFadd{\kappa_c^{I_c} = \frac{d\langle n_c^{I_c}\rangle}{d\mu_c^{I_c}},}\ee 
-\DIFadd{where $n_c$ is the number density of }\DIFaddend $c$\DIFdelbegin \DIFdel{monomial. As long as $\phi$ transforms as 
-}\begin{align*}
-\DIFdel{\delta \phi = \lambda_{I_c} P_c^{I_c}, %DIFDELCMD < \label{eqn:partial}%%%
-}\end{align*}%DIFAUXCMD
-\DIFdel{then $\partial_{i_1} \dots \partial_{i_{b+1}} \phi$ is invariant under $H=\mathcal{M}^b_\max$}\DIFdelend \DIFaddbegin \DIFadd{-pole charges, $\mu_c$ is a conjugate chemical potential, and $I_c = \{i_1,\dots,i_c\}$ is a composite index}\DIFaddend .
+Determining the counting of the Goldstone modes requires introducing the compressibilities $\kappa_c$, defined by 
+\be \label{kappadef} \kappa_c^{I_c} = \frac{d\langle n_c^{I_c}\rangle}{d\mu_c^{I_c}},\ee 
+where $n_c$ is the number density of $c$-pole charges, $\mu_c$ is a conjugate chemical potential, and $I_c = \{i_1,\dots,i_c\}$ is a composite index as before.
 
-\DIFdelbegin \DIFdel{Classical correlation functions for these operators take the form
-}\begin{align*}
-\DIFdel{C }&\DIFdel{= \left\langle \partial_{i_1} \dots \partial_{i_{b+1}} \phi(x) \partial_{j_1} \dots \partial_{j_{b+1}} \phi(0) \right\rangle \nn
-}&\DIFdel{\sim \int \frac{d^dk\, k^{2(b+1)}}{k^{2(a+1)}},
-}\end{align*}%DIFAUXCMD
-\DIFdel{and diverge when $d \le 2(a-b)\equiv d_\text{cl}$.On the other hand, the $T=0$ correlation functions behave as
-}\begin{align*}
-\DIFdel{C }&\DIFdel{= \left\langle \partial_{i_1} \dots \partial_{i_{b+1}} \phi(x) \partial_{j_1} \dots \partial_{j_{b+1}} \phi(0) \right\rangle \nn
-}&\DIFdel{\sim \int \frac{d\omega\, d^dk\, k^{2({b+1})}}{\omega^2 + k^{2(a+1)}}\nn
-}&\DIFdel{\sim \int \frac{d^dk\, k^{2(b+1)}}{k^{a+1}},
-}\end{align*}%DIFAUXCMD
-\DIFdel{so the quantum critical dimension is $d_\text{q} = a - 2b - 1$. We recover the maximal generalized Mermin-Wagner argument if we let $b=-1$ }\DIFdelend \DIFaddbegin \DIFadd{Let $b\leq a$ }\DIFaddend denote the \DIFdelbegin \DIFdel{trivial group ($b=0$ denotes the monopole group). Furthermore, the critical dimensions again satisfy $d_\cl = d_\text{q} + z$. }\DIFdelend \DIFaddbegin \DIFadd{smallest degree of multipole charge with nonzero compressibility, i.e. consider a situation in which $\kappa_d>0$ for all $b\leq d\leq a$, while $\kappa_d=0$ for all $d<b$. Then the minimal IR Lagrangian for the symmetry broken phase looks schematically like 
-}\be \label{generall} \DIFadd{\mathcal{L} = \kappa_b (\partial_\tau \phi_{I_b})^2 + g_{J_{a-b+1}}(\partial_{J_{a-b+1}}\phi_{I_b})^2,}\ee 
-\DIFadd{where 
-%DIF > $I_b = \{i_1,\dots,i_b\}$ and $J_{a-b+1}=\{j_1,\dots,j_{a-b+1}\}$ are composite indices with 
-$\p_{J_{a-b+1}} \equiv \p_{j_1} \cdots \p_{j_{a-b+1}}$, and where $\phi_{I_b}$ is a field that shifts by a polynomial of degree $a-b$ under the action of $\mmax a$. The compressibility appears as the coefficient of the time derivative term since $\p_\tau \phi_{I_b}$ is the momentum conjugate to $\phi_{I_b}$ in the quantum theory, and hence correlation functions of fluctuations in $n_b$ are determined by those of $\p_\tau \phi_{I_b}$. 
-}\DIFaddend 
+A necessary condition for $\mmax c$ to be spontaneously broken is that $\kappa_c \neq 0$. Indeed, if $\mmax c$ is spontaneously broken then $n_c$ creates Goldstones when acting on the ground state, thereby ensuring that the density-density correlator appearing in the calculation of \eqref{kappadef} must be nonzero at long wavelengths. Since we are assuming that $\mmax c$ is spontaneously broken for all $c>b$, we must accordingly have $\kappa_{c>b} \neq 0$. 
 
-%DIF <  The kinetic term should take the form
-%DIF <  \begin{align}
-%DIF <  K[\phi(x)] &= (\partial_{i_{m+1}}\dots \partial_{i_n} \phi_{i_1 \dots i_m})^2,
-%DIF <  \end{align}
-%DIF <  which is invariant under shifts of the form of Eq.~\ref{eqn:partial}. The dispersion for the Goldstone modes is $K_k \sim k^{2(n-m)} = k^{2(a-b)}$. Following the correlation function calculation above, we find a classical critical dimension of $d = 2(a-b)$ and a quantum critical dimension of $d = a-b$. 
-\DIFaddbegin \DIFadd{A necessary condition for $\mmax b$ to be spontaneously broken is that $\kappa_b \neq 0$. Indeed, if $\mmax b$ is spontaneously broken then $n_b$ creates Goldstones when acting on the ground state, thereby ensuring that the density-density correlator appearing in the calculation of }\eqref{kappadef} \DIFadd{must be nonzero at long wavelengths. }\ethan{is this too laconic?}
-\DIFaddend 
+However, $\kappa_c \neq 0$ does not {\it necessarily} imply that $\mmax c$ is spontaneously broken: $\kappa_c\neq 0$ means that the system possesses gapless modes created by $n_c$, but it is possible for fluctuations to be strong enough so that these modes cannot be associated with the Goldstone modes of a spontaneously broken $\mmax c$ (this is of course what happens in the QLRO phase of the 1+1D XY model). Therefore, we are allowed to have $\kappa^c \neq 0$ even if $c \leq b$, without contradicting our assumption about the symmetry breaking pattern. 
 
-\DIFdelbegin \subsection{\DIFdel{\note{Different phases for the same subgroup}}} %DIFAUXCMD
-\addtocounter{subsection}{-1}%DIFAUXCMD
-%DIFDELCMD < \label{sub:phases}
-%DIFDELCMD < 
+Let then $s\leq a$ denote the smallest degree of multipole charge with nonzero compressibility, i.e. consider a situation in which $\kappa_c>0$ for all $s\leq c\leq a$, while $\kappa_c=0$ for all $c<s$. 
+Given $s$, the minimal IR Lagrangian looks schematically like 
+\be \label{generall} \mathcal{L} = \kappa_s (\partial_\tau \phi_{I_s})^2 + g_{J_{a+1}}(\partial_{J_{a-s+1}}\phi_{I_s})^2,\ee where 
+$\p_{J_{a-s+1}} \equiv \p_{j_1} \cdots \p_{j_{a-s+1}}$, and where $\phi_{I_s}$ is a field that shifts by a polynomial of degree $a-s$ under the action of $\mmax a$.\footnote{The compressibility appears as the coefficient of the time derivative term since $\p_\tau \phi_{I_s}$ is the momentum conjugate to $\phi_{I_s}$ in the quantum theory, and hence correlation functions of fluctuations in $n_s$ are determined by those of $\p_\tau \phi_{I_s}$.}  If $s=b+1$, then $\phi_{I_s}$ may develop LRO while leaving $\mmax{b}$ invariant.
 
-%DIFDELCMD < %%%
-\DIFdel{The previous subsection shows that when the kinetic term in the effective action is $K\sim (\partial_i\partial_j\phi)^2$, there are intermediate dimensions ($d=2$ for $T>0$ or $d=1,2$ for $T=0$) where the symmetry breaking pattern preserves the monopole group. For smaller dimensions there is no symmetry breaking, while for larger dimensions (with this effective action) the group is fully broken .
-We can also write down theories where }\DIFdelend \DIFaddbegin \DIFadd{However, a nonzero $\kappa_b$ does not }{\it \DIFadd{necessarily}} \DIFadd{imply that $\mmax b$ is spontaneously broken. $\kappa_b\neq 0$ means that the system possesses gapless modes created by $n_b$, but it is possible for fluctuations to be strong enough so that these modes cannot be associated with }\DIFaddend the \DIFdelbegin \DIFdel{kinetic term will be $(\partial_i\theta_j)^2$. The latter type of theory will preserve the monopole group in any large enough dimension . Since the latter theory is quadratic, it behaves like an ordinary theory, with a MW theorem prohibiting symmetry breaking for $d\le 2$ }\DIFdelend \DIFaddbegin \DIFadd{Goldstone modes of a spontaneously broken $\mmax b$. Thus the theory }\eqref{generall} \DIFadd{does not necessarily describe a phase where $\mmax b$ is spontaneously broken, and the exact pattern of symmetry breaking depends on the spatial dimension and whether or not $T$ is nonzero. For example, we can again consider the theory in }\eqref{singlescalar} \DIFaddend at \DIFdelbegin \DIFdel{$T>0$ or $d\le 1$ at zero temperature}\DIFdelend \DIFaddbegin \DIFadd{$d=3,T>0$: even though the charge compressibility $\kappa_0$ (the coefficient of $(\p_\tau\phi)^2$ in }\eqref{singlescalar}\DIFadd{) is nonzero, $\phi$ fluctuates strongly enough that the monopole symmetry is not spontaneously broken}\DIFaddend .
+In order for $s< b+1$ to be consistent with our assumed pattern of symmetry breaking, it must be the case that the fluctuations of the fields in \eqref{generall} are strong enough so as to prevent $\mmax {s}$ from spontanoeusly breaking. The novelty provided by multipolar symmetries is that they offer an easy way of allowing for $s$ to be smaller than $b+1$, and thus provide an easy way of realizing multiple IR theories that have the same symmetry breaking pattern, but contain different numbers of modes. This is illustrated by the examples of the theories \eqref{vector} ($s=1$) and \eqref{singlescalar} ($s=0$), which have the same symmetry breaking pattern ($b=0$) in $d=3$ and at $T>0$. 
 
-	
+The theories we consider here have $(d+s-1 \text{ choose } s)$ massless modes, which is the number of degrees of freedom in a fully-symmetric rank-$s$ tensor. For the reasons discussed above, these modes may or may not be Goldstone modes. In different effective field theories, there may be other choices of symmetry-breaking fields and thus different numbers of independent modes. Still, we expect that in general the number of independent modes will depend on the compressibilities, not necessarily on the pattern of spontaneous symmetry breaking.
 
-\DIFdelbegin \DIFdel{We can organize these different theories that have the same SSB structure by their compressibilities. Since we are considering theories that conserve the dipole group, there will be dipole charges and monopole charges. Call the compressibility for the monopole charges $\mu_0$ and the compressibility for the dipole charges $\mu_1$. In any number of dimensions, there will be a Mott-insulator-like phase where $\mu_0=\mu_1  = 0$. 
-The kinetic term $(\partial_i\theta_j)^2$ assumes $\mu_0=0$ and $\mu_1>0$, while the term $(\partial_i \partial_j \phi)^2$ assumes both compressibilies are nonzero. }\DIFdelend \DIFaddbegin \subsection{\DIFadd{Generalized Mermin-Wagner: partial multipole breaking}}
-\DIFaddend 
+\subsection{Generalized Mermin-Wagner: partial multipole breaking} \label{sub:partial}
 
-\DIFdelbegin \DIFdel{The list of compressibilies only tells us which fields are available for writing down an effective action. As in the previous subsection, which operators develop long-range order depends on the dimension. The calculations are analogous to previous correlation functions , and the results are as follows. At nonzero temperature, the order $b$ of the preserved subgroup $\mmax{b}$ is 
-}\begin{align*}
-\DIFdel{\begin{tabular}{l|r|r|r}
-     }& \DIFdel{$d=1,2$ }& \DIFdel{$d=3,4$, }& \DIFdel{$d>4$ }\\
-    \DIFdel{$(\partial_i\partial_j\phi)^2$ }&  \DIFdel{1 }&  \DIFdel{0 }& \DIFdel{-1 }\\
-    \DIFdel{$(\partial_i\theta_j)^2$       }&  \DIFdel{1 }&  \DIFdel{0 }&  \DIFdel{0 }\\
-    \DIFdel{Mott                           }&  \DIFdel{1 }&  \DIFdel{1 }&  \DIFdel{1
-\end{tabular}
-}\end{align*}%DIFAUXCMD
-\DIFdel{where we are, as always, denoting the trivial group by $b=-1$. Because the correlation calculations do not have 
-any $\omega$ integral, the critical dimensions for a given symmetry-breaking pattern are }\DIFdelend \DIFaddbegin \DIFadd{In the previous subsection, we saw that }\DIFaddend the \DIFdelbegin \DIFdel{same in different theories. 
-}\DIFdelend \DIFaddbegin \DIFadd{number of Goldstone modes in the symmetry-breaking theory is determined by the smallest degree of multipole charge $b$ such that $\kappa_b\neq0$. We now turn to determining the symmetry breaking pattern that occurs for a given choice of $b,d,$ and $T$, thereby allowing us to formulate a generalized version of the Mermin-Wagner theorem for the case of partial multipole breaking. 
-}\DIFaddend 
+In the previous subsection, we saw that the number of Goldstone modes in the symmetry-breaking theory is determined by the smallest degree of multipole charge $s$ such that $\kappa_s\neq0$. We now turn to determining the symmetry breaking pattern that occurs for a given choice of $s$, spatial dimension $d,$ and temperature $T$, thereby allowing us to formulate a generalized version of the Mermin-Wagner theorem for the case of partial multipole breaking. 
 
-\DIFdelbegin \DIFdel{The same is not true at }\DIFdelend \DIFaddbegin \DIFadd{Since $\kappa_d=0$ if $d<b$, none of the subgroups $\mmax {d<b}$ can be spontaneously broken. Suppose then that the symmetry is spontaneously broken down to $\mmax {c}$, where $c\geq b$. To find the allowed values of $c$ consistent with this assumption, we need to calculate correlation functions of operators of the form $\exp(i\p_{J_{c-b}}\phi_{I_b})$, these being the operators transforming nontrivially under $\mmax c$ with the longest-range correlation functions. We have 
-}\be\ba \langle \DIFadd{\p_{J_{c-b}}\phi_{I_b}(x) \p_{J_{c-b}}\phi_{I_b}(0)}\rangle & \DIFadd{\sim \int \frac{d\omega \, dk\, k^{d-1+2(c-b)}}{\omega^2 + k^{2(a-b+1)}} }\\ 
-& \DIFadd{\sim \int dk\, k^{d-1+2(c-b) - \varsigma_T(a-b+1)}, }\ea\ee 
-\DIFadd{where we have defined the function $\varsigma_T$ such that $\varsigma_T = 1$ if }\DIFaddend $T=0$ \DIFdelbegin \DIFdel{. Similar correlation function calculations show that the symmetry-breaking patterns are 
-}\begin{align*}
-\DIFdel{\begin{tabular}{l|r|r|r}
-     }& \DIFdel{$d=1$ }& \DIFdel{$d=2$, }& \DIFdel{$d>2$ }\\
-    \DIFdel{$(\partial_i\partial_j\phi)^2$ }&  \DIFdel{0 }&  \DIFdel{0 }& \DIFdel{-1 }\\
-    \DIFdel{$(\partial_i\theta_j)^2$       }&  \DIFdel{1 }&  \DIFdel{0 }&  \DIFdel{0 }\\
-    \DIFdel{Mott                           }&  \DIFdel{1 }&  \DIFdel{1 }&  \DIFdel{1
-\end{tabular} %DIFDELCMD < \label{eqn:zerophases}%%%
-}\end{align*}%DIFAUXCMD
-\DIFdel{The interesting difference from finite temperature is that the theory with a $\phi$ field can preserve $\mmax{0}$ at $d=1$, while the theory with a $\theta_j$ field cannot.
-Both the }\DIFdelend \DIFaddbegin \DIFadd{and $\varsigma_T = 2$ if }\DIFaddend $T>0$\DIFdelbegin \DIFdel{and the $T=0$ table can easily be generalized to higher values of $a$, the order of the preserved multipole group. }\DIFdelend \DIFaddbegin \DIFadd{. Consequently, we find that $\mmax c$ can be spontaneously broken only in dimensions $d$ such that 
-}\be \label{pbreak_mw} \DIFadd{d>2(b-c) + \varsigma_T(a-b+1).}\ee 
-\DIFadd{For a given choice of symmetry breaking pattern (captured by $a$ and $c$) and a given choice of which compressibilities are nonzero (captured by $b$), the quantity on the RHS determines the lower critical dimension for symmetry breaking, thereby generalizing the Mermin-Wagner theorem to the partial breaking case. 
-As a sanity check on }\eqref{pbreak_mw}\DIFadd{, note that when we set $c=b=0$ (full multipole breaking) we recover the lower critical dimension of $\varsigma_T(a+1)$ obtained in the previous section. Also note that as expected, the lower critical dimensions in the quantum $(\varsigma_T = 1)$ and classical $(\varsigma_T = 2)$ cases are related by $d_{\rm cl} = d_{\rm q} + z$, where $z=a-b+1$ is the dynamical exponent of the Goldstone theory }\eqref{generall}\DIFadd{. 
-}\DIFaddend 
+Since $\kappa_c=0$ if $c<s$, none of the subgroups $\mmax {c<s}$ can be spontaneously broken. Suppose then that the subgroup $\mmax{c}$ is spontaneously broken, where $c\geq s$. To find the allowed values of $c$ consistent with this assumption, we need to calculate correlation functions of operators of the form $\exp(i\p_{J_{c-s}}\phi_{I_s})$, these being the operators transforming nontrivially under $\mmax c$ with the longest-range correlation functions. We have 
+\be\ba \langle \p_{J_{c-s}}\phi_{I_s}(x) \p_{J_{c-s}}\phi_{I_s}(0)\rangle & \sim \int \frac{d\omega \, dk\, k^{d-1+2(c-s)}}{\omega^2 + k^{2(a-s+1)}} \\ 
+& \sim \int dk\, k^{d-1+2(c-s) - \varsigma_T(a-s+1)}, \ea\ee 
+where we have defined the function $\varsigma_T$ such that $\varsigma_T = 1$ if $T=0$ and $\varsigma_T = 2$ if $T>0$. Consequently, we find that $\mmax c$ can be spontaneously broken only in dimensions $d$ such that 
+\be d>2(s-c) + \varsigma_T(a-s+1).\ee 
+The preserved subgroup is then the largest multipole group $\mmax{b}$ that is not spontaneously broken.
 
-\DIFdelbegin \DIFdel{Whenever there are distinct theories with the same symmetry-breaking pattern, some of the theories have operators with quasi-long-range order. 
-\todo{QLRO vs SRO} For example, the $(\partial_i\theta_j)^2$  theory at }\DIFdelend \DIFaddbegin \DIFadd{Finally, as an interesting example, consider the case where the dipolar group $(a=1)$ is broken down to the monopole group $(b=0,c=1)$. At $T=0$, we see from }\eqref{pbreak_mw} \DIFadd{that this is possible provided that $d>0$. Thus the partial breaking of dipole symmetry provides us with an example where a continuous symmetry can be spontaneously broken in }\DIFaddend $d=1$ \DIFdelbegin \DIFdel{acts like a Luttinger liquid of dipoles. A full analysis of quasi-long-range ordered fields is beyond the scope of this paper. Furthermore, we have only considered free fixed points. There certainly may be interacting theories with distinct phases and symmetry-breaking patterns~\mbox{%DIFAUXCMD
-\cite{TonerRadzihovsky}}\hspace{0pt}%DIFAUXCMD
-}\DIFdelend \DIFaddbegin \DIFadd{at zero temperature}\DIFaddend . 
+For a given choice of symmetry breaking pattern (captured by $a$ and $b$) and a given choice of which compressibilities are nonzero (captured by $s$), the critical dimension for symmetry breaking is
+\begin{align}
+d_\text{lc} = 2(s - b-1) + \varsigma_T (a-s+1) \label{pbreak_mw} 
+\end{align}
+generalizing the Mermin-Wagner theorem to the partial breaking case. 
+As expected, the lower critical dimensions in the quantum $(\varsigma_T = 1)$ and classical $(\varsigma_T = 2)$ cases are related by $d_{\rm cl} = d_{\rm q} + z$, where $z=a-s+1$ is the dynamical exponent of the Goldstone theory \eqref{generall}. 
 
-%DIF > In a classical system at $T>0$ the correlation functions of this operator are
-%DIF > \begin{align}
-%DIF > \left\langle \partial_i\phi(x) \partial_j\phi(0) \right\rangle &\sim \delta_{ij} \int \frac{d^dk\, k^2}{k^4},
-%DIF > \end{align}
-%DIF > so that the critical dimension is $d=2$, as in the standard Mermin-Wagner theorem for monopole symmetries. This allows us to interpret the dipole charges of the monopole symmetry as monopole charges of the dipole part of the symmetry group.
-%DIF > However, this interpretation does not hold for  quantum systems. 
-%DIF > The correlation function scales as
-%DIF > \begin{align}
-%DIF > \left\langle \partial_i\phi(x) \partial_j\phi(0) \right\rangle &\sim \delta_{ij} \int \frac{d\omega\, d^dk\, k^2}{\omega^2 + k^4}\nn
-%DIF > &= \delta_{ij} \int \frac{d^dk\, k^2}{k^2},
-%DIF > \end{align}
-%DIF > which is always IR-finite. We thus conclude that at $T=0$, $\mcm^1_{\rm max}$ can be spontaneously broken down to $\mcm^0$ in any dimension
-\DIFaddbegin 
+If we only care about the pattern of symmetry breaking, $\mmax{a}\rightarrow \mmax{b}$, the critical dimension can be found by setting $s=0$, so that
+\begin{align}
+d_\text{lc} = \varsigma_T (a+1) -2 (b+1). \label{pbreak_mw_nos}
+\end{align}
+As a sanity check on \eqref{pbreak_mw_nos}, note that for full multipole breaking, $b=-1$ (recall that $\mmax{-1}$ contains only translations and rotations), we recover the lower critical dimension of $\varsigma_T(a+1)$ obtained in the previous section. 
+In any higher dimension, such a symmetry breaking pattern will be possible. However, $s$ must always be chosen so as to give the correct preserved subgroup. As emphasized earlier, the number of Goldstone modes depends on $s$, not $b$.
 
-%DIF > We then recognize that these fundamental dipoles, which are of course the dipole charges of the monopole symmetry, are also the monopole charges of the dipole symmetry.  We should then expect symmetry breaking cannot occur for $d\le 2$ classically or $d\le 1$ quantum mechanically.
-%DIF > 
-%DIF > 
-%DIF > In more generality, for $G = \mathcal{M}^{a}_\text{max}$ and $H = \mathcal{M}^b_\text{max}$ there will be a charged operator $\partial_{i_1} \dots \partial_{i_{b+1}}\phi$ with a dispersion as in Eqn.~\ref{eqn:adisp}. Because $G$ is a maximal multipole group, we can still write the polynomials as in Eqn.~\ref{eqn:basis}. Recall that $P_c^{I_c}$ is a degree-$c$ monomial. As long as $\phi$ transforms as 
-%DIF > \begin{align}
-%DIF > \delta \phi = \lambda_{I_c} P_c^{I_c}, \label{eqn:partial}
-%DIF > \end{align}
-%DIF > then $\partial_{i_1} \dots \partial_{i_{b+1}} \phi$ is invariant under $H=\mathcal{M}^b_\max$. 
-%DIF > 
-%DIF > Classical correlation functions for these operators take the form
-%DIF > \begin{align}
-%DIF > C &= \left\langle \partial_{i_1} \dots \partial_{i_{b+1}} \phi(x) \partial_{j_1} \dots \partial_{j_{b+1}} \phi(0) \right\rangle \nn
-%DIF > &\sim \int \frac{d^dk\, k^{2(b+1)}}{k^{2(a+1)}},
-%DIF > \end{align}
-%DIF > and diverge when $d \le 2(a-b)\equiv d_\text{cl}$. On the other hand, the $T=0$ correlation functions behave as
-%DIF > \begin{align}
-%DIF > C &= \left\langle \partial_{i_1} \dots \partial_{i_{b+1}} \phi(x) \partial_{j_1} \dots \partial_{j_{b+1}} \phi(0) \right\rangle \nn
-%DIF > &\sim \int \frac{d\omega\, d^dk\, k^{2({b+1})}}{\omega^2 + k^{2(a+1)}}\nn
-%DIF > &\sim \int \frac{d^dk\, k^{2(b+1)}}{k^{a+1}},
-%DIF > \end{align}
-%DIF > so the quantum critical dimension is $d_\text{q} = a - 2b - 1$. We recover the maximal generalized Mermin-Wagner argument if we let $b=-1$ denote the trivial group ($b=0$ denotes the monopole group). Furthermore, the critical dimensions again satisfy $d_\cl = d_\text{q} + z$.
-%DIF > 
-%DIF > 
-%DIF > \subsection{General formulation of Mermin-Wagner}
-%DIF > % The kinetic term should take the form
-%DIF > % \begin{align}
-%DIF > % K[\phi(x)] &= (\partial_{i_{m+1}}\dots \partial_{i_n} \phi_{i_1 \dots i_m})^2,
-%DIF > % \end{align}
-%DIF > % which is invariant under shifts of the form of Eq.~\ref{eqn:partial}. The dispersion for the Goldstone modes is $K_k \sim k^{2(n-m)} = k^{2(a-b)}$. Following the correlation function calculation above, we find a classical critical dimension of $d = 2(a-b)$ and a quantum critical dimension of $d = a-b$. 
-%DIF > 
-%DIF > \subsection{\note{Different phases for the same subgroup}} \label{sub:phases}
-%DIF > 
-%DIF > The previous subsection shows that when the kinetic term in the effective action is $K\sim (\partial_i\partial_j\phi)^2$, there are intermediate dimensions ($d=2$ for $T>0$ or $d=1,2$ for $T=0$) where the symmetry breaking pattern preserves the monopole group. For smaller dimensions there is no symmetry breaking, while for larger dimensions (with this effective action) the group is fully broken.
-%DIF > We can also write down theories where the kinetic term will be $(\partial_i\theta_j)^2$. The latter type of theory will preserve the monopole group in any large enough dimension. Since the latter theory is quadratic, it behaves like an ordinary theory, with a MW theorem prohibiting symmetry breaking for $d\le 2$ at $T>0$ or $d\le 1$ at zero temperature.
-%DIF > 
-%DIF > We can organize these different theories that have the same SSB structure by their compressibilities. Since we are considering theories that conserve the dipole group, there will be dipole charges and monopole charges. Call the compressibility for the monopole charges $\mu_0$ and the compressibility for the dipole charges $\mu_1$. In any number of dimensions, there will be a Mott-insulator-like phase where $\mu_0=\mu_1  = 0$. The kinetic term $(\partial_i\theta_j)^2$ assumes $\mu_0=0$ and $\mu_1>0$, while the term $(\partial_i \partial_j \phi)^2$ assumes both compressibilies are nonzero.
-%DIF > 
-%DIF > The list of compressibilies only tells us which fields are available for writing down an effective action. As in the previous subsection, which operators develop long-range order depends on the dimension. The calculations are analogous to previous correlation functions, and the results are as follows. At nonzero temperature, the order $b$ of the preserved subgroup $\mmax{b}$ is 
-%DIF > \begin{align}
-%DIF > \begin{tabular}{l|r|r|r}
-%DIF >      & $d=1,2$ & $d=3,4$, & $d>4$ \\
-%DIF >     $(\partial_i\partial_j\phi)^2$ &  1 &  0 & -1 \\
-%DIF >     $(\partial_i\theta_j)^2$       &  1 &  0 &  0 \\
-%DIF >     Mott                           &  1 &  1 &  1
-%DIF > \end{tabular}
-%DIF > \end{align}
-%DIF > where we are, as always, denoting the trivial group by $b=-1$. Because the correlation calculations do not have any $\omega$ integral, the critical dimensions for a given symmetry-breaking pattern are the same in different theories. 
-
-%DIF > The same is not true at $T=0$. Similar correlation function calculations show that the symmetry-breaking patterns are 
-%DIF > \begin{align}
-%DIF > \begin{tabular}{l|r|r|r}
-%DIF >      & $d=1$ & $d=2$, & $d>2$ \\
-%DIF >     $(\partial_i\partial_j\phi)^2$ &  0 &  0 & -1 \\
-%DIF >     $(\partial_i\theta_j)^2$       &  1 &  0 &  0 \\
-%DIF >     Mott                           &  1 &  1 &  1
-%DIF > \end{tabular} \label{eqn:zerophases}
-%DIF > \end{align}
-%DIF > The interesting difference from finite temperature is that the theory with a $\phi$ field can preserve $\mmax{0}$ at $d=1$, while the theory with a $\theta_j$ field cannot.
-%DIF > Both the $T>0$ and the $T=0$ table can easily be generalized to higher values of $a$, the order of the preserved multipole group.
-
-%DIF > Whenever there are distinct theories with the same symmetry-breaking pattern, some of the theories have operators with quasi-long-range order. \todo{QLRO vs SRO} For example, the $(\partial_i\theta_j)^2$  theory at $d=1$ acts like a Luttinger liquid of dipoles. A full analysis of quasi-long-range ordered fields is beyond the scope of this paper. Furthermore, we have only considered free fixed points. There certainly may be interacting theories with distinct phases and symmetry-breaking patterns~\cite{TonerRadzihovsky}. \ethan{how do you have interacting goldstones for an abelian symmetry?}
-
-\DIFaddend % ------------------------
-
-% Once we have identified a symmetry group $G$ and its preserved subgroup $H$ we still have not fully specified a phase of matter. As an example, consider the previous case of partially breaking the maximal dipole group $\mathcal{M}^1_\max$ to the monopole group $\mathcal{M}^0_\max$. There is one theory with Lagrangian
-% \begin{align}
-% \mathcal{L}_2 = (\partial_t \phi)^2 + \sum_{ij} (\partial_i \partial_j \phi)^2,
-% \end{align}
-% which has critical dynamical exponent $z=2$. There is another theory with Lagrangian
-% \begin{align}
-% \mathcal{L}_1 &= (\partial_t \varphi_i)^2  + \sum_{ij} (\partial_i \varphi_j)^2,
-% \end{align}
-% and $z=1$. The two theories differ in that, if $\phi$ transforms as $\phi \goesto \phi + a_ix^i + b$, then $\varphi_i$ transforms as $\varphi_i \goesto \varphi_i + a_i$
-
-% \charlie{Does this mean the phase transition (if it exists) has to be topological,  \ethan{in what sense?} in the sense that the symmetry group and preserved subgroups are the same/ beyond Landau?}
-
-% For both theories, the classical critical dimension is $d_\cl = 2$. However, they have different quantum critical dimensions, $d_{\q, 1} = 1$ and $d_{\q,2}=0$. Both theories obey $d_\cl = d_\q + z$. Of course, for $d>2$ the $z=2$ theory develops long-range order for $e^{i\phi(x)}$, breaking the monopole symmetry in addition to the dipole symmetry.
-
-% We can now generalize to arbitrary $a$ and $b$. To do so, we define a field $\phi_{i_1\dots i_k}$ which transforms under $\mathcal{M}^a_\max$ as 
-% \begin{align}
-% \delta \phi_{i_1\dots i_k} = \lambda_{I_c} \partial_{i_1} \dots \partial_{i_k} P_c^{I_c}.
-% \end{align}
-% The kinetic term for this field will be
-% \begin{align}
-% K \sim (\partial_{i_{k+1}} \dots \partial_{i_{a+1}} \phi_{i_1\dots i_k})^2, \label{eqn:atok}
-% \end{align}
-% so that $z = 1+a-k$. Although $\phi_{i_1\dots i_k}$ is invariant under $\mathcal{M}^k_\max$, that field may not be able to develop long-range order. The fields that do develop LRO may be invariant under larger groups. In particular, $\partial_{i_{k+1}} \dots \partial_{i_{b+1}} \phi_{i_1\dots i_k} $ is invariant under $\mathcal{M}^b_\max$
-
-% At finite temperature, the field $\phi_{i_1\dots i_k}$ develops long-range order when $d>2(a-k)$, so that the preserved subgroup is $\mmax{k}$. When $2(a-b)<d\le 2(a-b+1)$, the preserved subgroup is $\mmax{b}$. The upshot is that there are $N^d_{ab}$ to spontaneously break the symmetry from $\mmax{a}$ to $\mmax{b}$ in $d$ spacial dimensions. The function is
-% \begin{align}
-% N^d_{ab} = \begin{cases} 0, \quad d\le 2(a-b) \\ 2 \\ 
-% \end{cases}
-% \end{align}
-
-% All of these theories will have $d_\cl = 2(a-b)$ and $d_\q = 2(a-b) - z$.
-
-% In addition to having different critical exponents $z$, these different theories with the same symmetry breaking patterns have different numbers of Goldstone modes. For the dipole examples considered above, the $z=1$ theory has $d$ massless modes (the components of $\varphi_i$) while the $z=2$ theory only has a single massless mode, $\phi$. \charlie{What else should we say about this?}
-
-% \todo{How should we address the question of stability?}
-% \ethan{I think my comments about stability are actually not relevant here --- they only imply that the transition between the ordered and disordered phases cannot be studied using by doing a perturbative analysis of the effects of vortex operators in the ordered phase}  
+As an interesting example, consider the case where the dipolar group $(a=1)$ is broken down to the monopole group $(b=0)$. At $T=0$, we see from \eqref{pbreak_mw_nos} that this is possible provided that $d>0$. Thus the partial breaking of dipole symmetry provides us with an example where a continuous symmetry can be spontaneously broken in $d=1$ at zero temperature. 
 
 \section{Systems with quenched disorder} \label{sec:disord}
 
 Let us now add some quenched disorder to our systems. In particular, we will consider disorder that explicitly breaks the symmetry locally but does not break the symmetry on average. Spatial disorder will also break translation and rotation symmetry, but again not on average. Of course, strong enough disorder can always destabilize the ordered phase, so will not consider that case. Weak disorder can discourage the ordered phase and raise the critical dimension at which SSB is impossible. Theorems of this type originate with Imry and Ma~\cite{ImryMa} and were proved by Aizenman and Wehr~\cite{Aizenman}.
 
-In a disordered classical system, the energy scaling argument gives a nice explanation for why the critical dimension changes. Consider the formation of a domain in an otherwise ordered phase fully breaking the maximal multipole group $\mathcal{M}^a_\max$. There are $\sim L^d$ disorder samples in the new domain. Since each sample is taken independently, the typical energy gain from forming the domain will be $\sim L^{d/2}$, by the central limit theorem. Comparing this to the cost of domain formation we calculated previously, the ordered phase will be unstable to domain nucleation when $d\le 4(a+1)$. 
+In \DIFdelbegin \DIFdel{order to calculate the correlation function}\DIFdelend \DIFaddbegin \DIFadd{a disordered classical system, the energy scaling argument gives a nice explanation for why the critical dimension changes. Consider the formation of a domain of linear size $L$ in an otherwise ordered phase fully breaking the maximal multipole group $\mathcal{M}^a_\max$. There are $\sim L^d$ disorder samples in the new domain. Since each sample is taken independently, the typical energy gain from forming the domain will be $\sim L^{d/2}$, by the central limit theorem. Comparing this to the cost of domain formation we calculated previously, the ordered phase will be unstable to domain nucleation when $d\le 4(a+1)$. We emphasize that we are here considering disorder that couples linearly to the order parameter. 
+}
 
-In clean systems, the transition from classical to quantum brought down the critical dimension because the argument depended on entropy. The Imry-Ma argument only appeals to energy considerations, so the quantum critical dimension in the presence of disorder remains the same as the classical critical dimension~\cite{Vojta2013}. In disordered quantum systems, SSB is impossible for $d\le 4(a+1)$.
+\DIFadd{In clean systems, the transition from classical to quantum brought down the critical dimension because the argument depended on entropy. The Imry-Ma argument instead only appeals to energy considerations, so the quantum critical dimension in the presence of disorder remains the same as the classical critical dimension~\cite{Vojta2013}
+. In disordered quantum systems, full SSB is impossible for $d\le 4(a+1)$.
+}
 
-To reproduce this argument using a correlation function calculation~\cite{ImryMa} we need to calculate the response to disorder. Call the disorder field $h(x)$ and redefine $\phi(x)$ to be the variation away from the average value $\phi_0$. The relevant part of the Hamiltonian is 
+\DIFadd{To reproduce this argument using a correlation function calculation}\DIFaddend ~\cite{ImryMa} we need to calculate the response to disorder. Call the disorder field $h(x)$ and redefine $\phi(x)$ to be the variation away from the average value $\phi_0$. The relevant part of the Hamiltonian is 
 \begin{align}
 H &\sim \int d^dx \left[ \half K[ \phi(x)] - \phi(x) h(x) \right] \nn
 &\sim \int d^dk \left[ \half \phi_{-k} K_k \phi_k - \phi_{-k} h_k \right] \nn
@@ -626,128 +443,70 @@ We can then compute the correlation function for $\phi(x)$,
 \begin{align}
 \langle \phi(0) \phi(x) \rangle &\sim \int d^dk \, K_k^{-2} \langle h_{-k} h_{k} \rangle e^{ik\cdot x},
 \end{align}
-where $\langle h_{-k} h_{k} \rangle e^{ik\cdot x}$ does not affect the divergence at small $k$, assuming the disorder is short range correlated. We can compare to Eqn.~\ref{eqn:correl} to see that in the presence of disorder that couples linearly to an order parameter fully breaking multipole symmetry, the critical dimension for a disordered system is twice the critical dimension for having direct full multipole symmetry breaking in a clean classical system.
+where $\langle h_{-k} h_{k} \rangle e^{ik\cdot x}$ does not affect the divergence at small $k$, assuming the disorder is short range correlated. We can compare to~\eqref{eqn:correl} to see that in the presence of disorder that couples linearly to an order parameter fully breaking multipole symmetry, the critical dimension for a disordered system is twice the critical dimension for having direct full multipole symmetry breaking in a clean classical system.
 
 We will now consider disorder that breaks the symmetry to a subgroup. For simplicity, let the symmetry of the system be the maximal dipole group and let the disorder break the dipole part of the group but not the monopole part. The kinetic term is $K[\phi(x)]= (\partial_i \partial_j \phi)^2$, while the coupling to disorder will be something like $(\partial_i\phi - \zeta_i)^2$, where $\zeta_i$ is the disorder field. 
 Define the vector field $\xi_i = \partial_i\phi$, with kinetic term $K[\xi(x)]= (\partial_i \xi_j)^2$. In the ordered phase $\xi_i$ will have some constant value. It need not vanish because of the dipole symmetry. In the presence of weak disorder, it will want to follow the $\zeta_i$ field where possible. We can now follow the argument of the Imry-Ma theorem to say that the critical dimension will be $d=4$.
 
 A more general case is a system with symmetry $G = \mathcal{M}_\max^a$ and disorder that breaks the symmetry to $\mathcal{M}_\max^b$ but preserves $G$ on average. In this system the critical dimension for long-range order of a field that breaks $\mmax{a}$ but preserves $\mmax{b}$ should be $d=4(a-b)$ for both classical and quantum systems. Again, let $b=-1$ denote the trivial group in order to recover our previous results.
 
-%\todo{No more mediated criticality}
-%As in the clean systems, we can have a sequence of phase transitions separated by intermediate phases in which the multipole symmetry is broken to a progressively smaller subgroup. With enough order parameter fields, any multipole symmetry can be fully broken in dimension $d>4$, regardless of which order parameter the disorder couples to. The same is true in quantum systems. Whether a certain phase transition is allowed or whether there needs to be an intermediate phase depends on the spatial dimension and the nature of the disorder.
-
 \section{Explicit lattice example} \label{sec:example}
 
-We now present a transparent quantum lattice example to illustrate the spontaneous breaking of multipolar symmetry. To this end, we take seriously the idea that ``dipole charges are monopole charges of a dipole symmetry," and include explicit secondary degrees of freedom that couple to dipole moments of the original degrees of freedom. This allows us to access phases corresponding to partial or complete symmetry breaking. 
+We now present a transparent quantum lattice example to illustrate the spontaneous breaking of multipolar symmetry. We will not derive further results from this model. Rather, we apply our previous results to this model to understand how various phases are available in different dimensions. Reference~\cite{dbhm} gives detailed descriptions of the various phases and their transitions.
 
-Consider a $d$-dimensional hypercubic lattice with sites labeled by $j$ and directions labeled by $\mu = 1,\dots,d$. Let there be bosonic \DIFdelbegin \DIFdel{quantum }\DIFdelend degrees of freedom \DIFdelbegin \DIFdel{$n_j$ }\DIFdelend \DIFaddbegin \DIFadd{annihilated by $b_j$ }\DIFaddend on the sites\DIFdelbegin \DIFdel{and $n'_{j,j+\mu}$ }\DIFdelend \DIFaddbegin \DIFadd{, and `dipolar' bosonic degrees of freedom annihilated by $d_{j,j+\mu}$ }\DIFaddend on the edges. \DIFdelbegin \DIFdel{Thus, we can say there are }\DIFdelend \DIFaddbegin \DIFadd{We can thus think of there as being }\DIFaddend $d$ species of edge-type bosons.
+Consider a $d$-dimensional hypercubic lattice with sites labeled by $j$ and directions labeled by $\mu = 1,\dots,d$. Let there be bosonic degrees of freedom annihilated by $b_j$ on the sites, and `dipolar' bosonic degrees of freedom annihilated by $d_{j,j+\mu}$ on the edges. We can thus think of there as being $d$ species of edge-type bosons.
 
 Define the symmetry operators
 \begin{align}
 \op{1}(\xi) &= \prod_je^{i\xi n_j}\nn
-\op{2}_\mu(\xi) &= \prod_j e^{i\xi (j_\mu n_j)}e\DIFdelbegin \DIFdel{^{i\xi n'_{j,j+\mu}}}\DIFdelend \DIFaddbegin \DIFadd{^{i\xi n^d_{j,j+\mu}}}\DIFaddend ,
+\op{2}_\mu(\xi) &= \prod_j e^{i\xi (j_\mu n_j)}e^{i\xi n^d_{j,j+\mu}},
 \end{align}
-where $j_\mu$ is the $\mu$-th component of the site label $j$\DIFaddbegin \DIFadd{, $n$ is the site boson number operator, and $n^d$ is the edge boson number operator}\DIFaddend .
+where $j_\mu$ is the $\mu$-th component of the site label $j$, $n$ is the site boson number operator, and $n^d$ is the edge boson number operator.
 The first operator corresponds to conservation of the total number of site bosons, while the $\mu$-th component of the second operator corresponds to the sum of the $\mu$-th component of the total dipole moment of site bosons and the total number of the $\mu$-th type of edge bosons. These symmetries allow us to exchange a dipole of site bosons for an edge boson. 
 
-The \DIFdelbegin \DIFdel{most relevant }\DIFdelend \DIFaddbegin \DIFadd{minimal }\DIFaddend Hamiltonian obeying these symmetries is  
+The minimal Hamiltonian obeying these symmetries is  
 \begin{align}
 H_0  &= H_b + H_d + H_\text{int}\nn
 H_b &= \sum_j \left[ \frac{U_b}{2}  n_j (n_j-1) - \mu_b \, n_j \right] \nn
 &\qquad - \sum_{j,\mu,\nu} t_b \left[  b_j b^{\dag}_{j+\mu} b^{\dag}_{j+\nu} b_{j+\mu+\nu} + H.C. \right]\nn
-H_d &= \sum_{j,\mu} \left[ \frac{U_d}{2} n\DIFdelbegin \DIFdel{'}\DIFdelend \DIFaddbegin \DIFadd{^d}\DIFaddend _{j,j+\mu} (n\DIFdelbegin \DIFdel{'}\DIFdelend \DIFaddbegin \DIFadd{^d}\DIFaddend _{j,j+\mu} - 1) -\mu_d \, n\DIFdelbegin \DIFdel{'}\DIFdelend \DIFaddbegin \DIFadd{^d}\DIFaddend _{j, j + \mu} \right]\nn
+H_d &= \sum_{j,\mu} \left[ \frac{U_d}{2} n^d_{j,j+\mu} (n^d_{j,j+\mu} - 1) -\mu_d \, n^d_{j, j + \mu} \right]\nn
 &\qquad  - \sum_{j,\mu,\nu} t_d \left[d^{\dag}_{j, j + \mu} d_{j + \nu, j+\mu + \nu} +H.C.\right]\nn
 H_\text{int} &= \sum_{j,\mu} g\left[ b_j d_{j,j+\mu} b^\dag_{j+\mu} + H.C. \right],
 \end{align}
 where sums are taken over sites $j$ and lattice directions $\mu$ and $\nu$.  
-\DIFdelbegin \DIFdel{The operator $b^\dagger_j$ creates a boson on site $j$ while $d^\dagger_{j,j+\mu}$ creates an boson on the edge between $j$ and $j+\mu$. }\DIFdelend %DIF > The operator $b^\dagger_j$ creates a boson on site $j$ while $d^\dagger_{j,j+\mu}$ creates an boson on the edge between $j$ and $j+\mu$. 
 For simplicity, let us set 
 \begin{align}
 \frac{\mu_b}{ U_b} = \frac{\mu_d }{ U_d} = \frac{1}{2},
 \end{align}
-so there is a robust insulating phase at weak hopping $t_b, t_d$~\cite{Fisheretal}. \DIFaddbegin \DIFadd{A detailed discussion of the phase diagram and phenomenology of this model will be given in~\mbox{%DIFAUXCMD
-\cite{dbhm}}\hspace{0pt}%DIFAUXCMD
-; in the following we will simply discuss the symmetry breaking patterns realized in various different limits. 
-}\DIFaddend 
+so there is a robust insulating phase at weak hopping $t_b, t_d$~\cite{Fisheretal}. A detailed discussion of the phase diagram and phenomenology of this model is given in~\cite{dbhm}; in the following we will simply discuss the symmetry breaking patterns realized in various different limits. 
 
-The Hamiltonian $H_b$ controls condensation of the site bosons. When $t_b$ is small, the site bosons are in number eigenstates while when $t_b$ is large the site bosons condense \DIFaddbegin \DIFadd{(although note that since the term proportional to $t_b$ is quartic in the site boson operators, the condensation transition may be nonstandard)}\DIFaddend . Similarly, the edge bosons condense when $t_d$ is large. Note that \DIFaddbegin \DIFadd{lattice rotation symmetry will be broken if only a subset of the edge bosons condense, while if }\DIFaddend all $d$ species of \DIFdelbegin \DIFdel{edge boson will condense equally , so that }\DIFdelend \DIFaddbegin \DIFadd{condense equally then }\DIFaddend lattice rotation symmetry is \DIFdelbegin \DIFdel{not broken. }\DIFdelend \DIFaddbegin \DIFadd{preserved. We are not aware of a way to condense objects with dipolar charge while preserving }{\it \DIFadd{continuous}} \DIFadd{rotation symmetry. }\ethan{when doing mean field for the dipoles the potential may be such as to favor a case where only one species condenses. The quartic part of the potential is a complicated function that depends on the dimension and parent Mott insulator, so it's better to just discuss both possibilities} 
+The Hamiltonian $H_b$ controls condensation of the site bosons. When $t_b$ is small, the site bosons are in number eigenstates while when $t_b$ is large the site bosons condense (although note that since the term proportional to $t_b$ is quartic in the site boson operators, the condensation transition may be nonstandard). Similarly, the edge bosons condense when $t_d$ is large. Note that lattice rotation symmetry will be broken if only a subset of the edge bosons condense, while if all $d$ species of condense equally then lattice rotation symmetry is preserved. We are not aware of a way to condense objects with dipolar charge while preserving {\it continuous} rotation symmetry. 
 
-\DIFaddend The term $H_\text{int}$ is allowed by the symmetry because it simultaneously removes an edge boson and creates a dipole of site bosons. \DIFdelbegin \DIFdel{When }\DIFdelend \DIFaddbegin \DIFadd{Note that when }\DIFaddend the edge bosons are condensed, $H_\text{int}$ gives the site bosons an effective single particle hopping\DIFaddbegin \DIFadd{: thus condensation of single bosons can either proceed directly (by making $t_b$ large) or indirectly (by first condensing dipoles, and making the effective single-particle hopping term large)}\DIFaddend . 
-%and hence an effective $k^2$ dispersion, which would otherwise be disallowed by symmetry. \charlie{What would the effective dispersion actually be? Does it make sense to say that it is $k^2$ at short distances and $k^4$ at long distance?}
+The term $H_\text{int}$ is allowed by the symmetry because it simultaneously removes an edge boson and creates a dipole of site bosons. Note that when the edge bosons are condensed, $H_\text{int}$ gives the site bosons an effective single particle hopping: thus condensation of single bosons can either proceed directly (by making $t_b$ large) or indirectly (by first condensing dipoles, and making the effective single-particle hopping term large). 
 
-\DIFdelbegin \DIFdel{\charlie{Relevance of cosine terms and stability to crystal phase?}
-}\DIFdelend %DIF > \charlie{Relevance of cosine terms and stability to crystal phase?}
-%DIF > \ethan{at large enough hopping strength we will generically just get a condensate and don't have to worry about this stuff}
+Consider first the phase in which only the edge bosons have condensed, with the site bosons remaining gapped. In this case the dipole compressibility $\kappa_1$ is nonzero, while the charge compressibility vanishes, $\kappa_0=0$. The condensed phase is therefore described in the IR by the $z=1$ theory \eqref{vector}, and the dipolar symmetry is spontaneously broken down to the monopole subgroup provided that $d>1$ (for $T=0$) or $d>2$ (for $T>0$). 
 
-\DIFdelbegin \DIFdel{The phases of this model will be those in Eqn. ~\ref{eqn:zerophases}. The values of $t_b$ and $t_d$ will determine which fields are available for the IR action. 
-When }\DIFdelend \DIFaddbegin \DIFadd{Consider first the phase in which only the edge bosons have condensed, with the site bosons remaining gapped. In this case the dipole compressibility $\kappa_1$ is nonzero, while the charge compressibility vanishes, $\kappa_0=0$. The condensed phase is therefore described in the IR by the $z=1$ theory }\eqref{vector}\DIFadd{, and the dipolar symmetry is spontaneously broken down to the monopole subgroup provided that $d>1$ (for $T=0$) or $d>2$ (for $T>0$). 
-}
-
-\DIFadd{Next, consider the phase where }\DIFaddend the site bosons \DIFdelbegin \DIFdel{are condensedthe $\phi$ field exists but might not be long-range ordered. Similarly when the edge bosons are condensed the $\theta_j$ field exists but might not be long-range ordered. For $d<2$ any symmetry-breaking pattern is possible. For $0<d\le 2$ the symmetry can not be completely broken , but the dipole part can be broken }\DIFdelend \DIFaddbegin \DIFadd{have condensed}\DIFaddend . \DIFdelbegin \DIFdel{\charlie{What is the effect of $H_\text{int}$?}
-}\DIFdelend \DIFaddbegin \DIFadd{In this case both $\kappa_1,\kappa_0$ are nonzero, and deep in the condensed phase the IR physics is described by the $z=2$ theory }\eqref{singlescalar}\DIFadd{. The dipolar symmetry is spontaneously broken in $d>0$ if $T=0$ and in $d>2$ at $T>0$, while the monopole subgroup is spontaneously broken in $d>2$ at $T=0$ and $d>4$ at $T>0$. This model therefore provides us with a way of realizing symmetry-broken phases described by both of our earlier example theories }\eqref{vector} \DIFadd{and }\eqref{singlescalar}\DIFadd{.
-}
-
-%DIF > The phases of this model will be those in Eqn.~\ref{eqn:zerophases}. The values of $t_b$ and $t_d$ will determine which fields are available for the IR action. When the site bosons are condensed the $\phi$ field exists but might not be long-range ordered. Similarly when the edge bosons are condensed the $\theta_j$ field exists but might not be long-range ordered. For $d<2$ any symmetry-breaking pattern is possible. For $0<d\le 2$ the symmetry can not be completely broken, but the dipole part can be broken. 
-\DIFaddend 
-
-%At sufficiently high dimension, this system will support three phases, which may be loosely described as the Mott insulator, the monopole superfluid where site bosons are condensed and the dipole superfluid where edge bosons (but not site bosons) are condensed. 
-%Note that the dipole superfluid does preserve lattice rotations.
-%In the monopole superfluid phase, the effective Hamiltonian contains bare creation and annihilation terms for the edge bosons, which automatically breaks number conservation of the edge bosons, and effectively induces a dipole superfluid as well. We can identify these phases with symmetry breaking patterns of the multipole group. In the trivial phase the group is unbroken. In the dipole superfluid, the group is broken to its monopole subgroup. The monopole superfluid then corresponds to the fully broken symmetry.
-
-% In the absence of disorder, neither symmetry breaking pattern can occur for $d\le 1$. There may still be interesting phases, such as a Luttinger liquid.
-% For $d>2$ dipole and monopole symmetry breaking may occur, so all three phases are intact. Furthermore, transitions between any two phases are allowed.
-% This leaves the intermediate case of $d=2$, in which all three phases can exist, but there can be no transitions between any symmetry-unbroken phase and the monopole superfluid. Instead, there must be an intermediate phase with dipole but not monopole superfluidity. Representative single-parameter phase diagrams are shown in Fig.~\ref{fig:phases}.
-
-% \begin{figure}
-% \centering
-
-% \begin{tikzpicture}[scale = .9]
-% \draw[<->] (0,0) node[left]{(a)}  -- (8,0) node[right]{$s$};
-% \draw (4,-.1) -- (4,.1);
-
-% \node [align=center] (A) at (2, -0.5) {unbroken};
-% \node [align=center] (C) at (6, -0.5) {fully\\broken};
-
-% \end{tikzpicture}
-% \begin{tikzpicture}[scale = .9]
-
-% \draw[<->] (0,0) node[left]{(b)}  -- (8,0) node[right]{$s$};
-% \draw (2.667,-.1) -- (2.667,.1);
-% \draw (5.333,-.1) -- (5.333,.1);
-
-% \node [align=center] (A) at (1.333, -0.5) {unbroken};
-% \node [align=center] (B) at (4, -0.5) {dipole\\broken};
-% \node [align=center] (C) at (6.667, -0.5) {fully\\broken};
-% \end{tikzpicture}
-
-% \caption{\todo{Remove figure} \todo{New figure with different dipole-breaking phases?}(a) For  $d>2$, there can be direct transitions between symmetry-unbroken and the fully-broken phase. Here $s$ is intended to represent a parameter along an arbitrary line in the phase diagram that crosses this transition. (b) At $d=2$, although the symmetry can be fully broken, the fully broken phase cannot touch the unbroken phase. Any line through the phase diagram that connects the two phases must pass though the dipole-broken phase. These phase diagrams are for translation invariant systems at zero temperature.}
-% \label{fig:phases}
-% \end{figure}
+Next, consider the phase where the site bosons have condensed. In this case both $\kappa_1,\kappa_0$ are nonzero, and deep in the condensed phase the IR physics is described by the $z=2$ theory \eqref{singlescalar}. The dipolar symmetry is spontaneously broken in $d>0$ if $T=0$ and in $d>2$ at $T>0$, while the monopole subgroup is spontaneously broken in $d>2$ at $T=0$ and $d>4$ at $T>0$. This model therefore provides us with a way of realizing symmetry-broken phases described by both of our earlier example theories \eqref{vector} and \eqref{singlescalar}.
 
 Let us now consider the same system, but with disorder.  The disorder Hamiltonian is
 \begin{align}
 H_\text{dis} &= \left[h_b\sum_j \sigma^*_jb_j + h_d \sum_{j,\mu} \sigma^*_{j,\mu}d_{j,j+\mu}\right] + H.C.,
 \end{align}
-where $h_b$ and $h_d$ control the magnitude of the disorder and each instance of $\sigma$ is a random phase. We will always consider \DIFdelbegin \DIFdel{$h_b,h_d<<1$}\DIFdelend \DIFaddbegin \DIFadd{$h_b,h_d\ll1$}\DIFaddend .
+where $h_b$ and $h_d$ control the magnitude of the disorder and each instance of $\sigma$ is a random phase. We will always consider $h_b,h_d\ll1$.
 
-%At first, we will set $h_d=0$ but turn on $h_b$. This corresponds to the main considerations from Sec.~\ref{sec:disord}, where the disorder couples to the order parameter that fully breaks the symmetry. This raises the critical dimension for the long-range order of the site bosons. The edge bosons may still enter a superfluid phase for $d>1$, but the site bosons may not condense with long range phase order until $d>4$. There cannot be a direct transition from the insulator to the monopole superfluid until $d>8$.  A phase akin to a Bose glass \cite{Fisheretal} of monopoles, where site bosons condense but without long-range order, can still exist in $1\le d<4$. 
-
-%Now, let $h_d\ne 0$ while keeping $h_b=0$. The Imry-Ma argument for the edge bosons says that they should not be able to enter a superfluid phase when $d\le 4$. Once again, we can enter a Bose glass phase where $\langle d_{j, j+\mu} \rangle \ne 0$. In this case, the site bosons acquire a random single particle {\it hopping}. This may be expected to give rise to a Bose glass phase also for the site bosons. This implies that the monopoles cannot even undergo mediated condensation to superfluidity for $d\le 4$. For $d>4$, the dipoles may enter a superfluid phase, and the monopoles can enter a superfluid phase without mediation.
-
-%It is difficult to justify including including one disorder field but not the other. The standard reason to forbid disorder is by imposing translation invariance, but if we are already including one disorder field we are necessarily breaking translation symmetry. 
 For $h_b,h_d\ne 0$, we can fully rely on the Imry-Ma argument. No symmetry breaking can occur for $d\le 4$, the dipole part of the symmetry may be broken for $4<d\le 8$, and any symmetry-breaking phase can occur for $d>8$. 
 
 \section{Discussion} \label{sec:disc}
 
-\charlie{Should we say anything about Ref.~\cite{Argurio2021}, which doesn't consider multipole symmetry, but does look at restricted mobility and crystal-like phases from abnormal kinetic terms?}
+In this paper we analyzed the spontaneous symmetry breaking of various multipole groups and discussed generalized Mermin-Wagner theorems for breaking a maximal multipole group, either fully or to a subgroup. We also considered multipole groups that are not the maximal multipole group, and the effect of quenched disorder. The disorder that we considered explicitly broke the symmetry, either fully or to a subgroup.
 
-In this paper we analyzed the spontaneous symmetry breaking of various multipole groups \DIFdelbegin \DIFdel{, }\DIFdelend and discussed generalized Mermin-Wagner theorems, which \DIFdelbegin \DIFdel{(we argued ) }\DIFdelend \DIFaddbegin \DIFadd{we argued }\DIFaddend should be best understood as constraints on when a direct transition fully breaking a multipole group can occur, and when a symmetry unbroken phase and a (monopole) symmetry breaking phase must be separated by intermediate phases breaking higher multipole symmetries \DIFaddbegin \ethan{is this still the best way of thinking about things? (also by ``direct transition'' I am assuming you mean ``direct continuous transition''?)}\DIFaddend . We also considered multipole groups that are not the maximal multipole group, and the effect of quenched disorder. The disorder that we considered explicitly broke the symmetry, either fully or to a subgroup.
+Of course, we could consider further combinations of effects. For example, we could spontaneously break a symmetry from a group $G$ to a subgroup $H$, where one or both of $G,H$ are non-maximal; we could also consider non-maximal groups with disorder. While the number of potential examples to consider is large, they should all be analyzable using the ideas introduced herein. 
 
-Of course, we could consider further combinations of effects. \DIFdelbegin \DIFdel{We }\DIFdelend \DIFaddbegin \DIFadd{For example, we }\DIFaddend could spontaneously break a symmetry from a group $G$ to a subgroup $H$\DIFdelbegin \DIFdel{where either $G$ or $H$ }\DIFdelend \DIFaddbegin \DIFadd{, where one or both of $G,H$ }\DIFaddend are non-maximal\DIFdelbegin \DIFdel{. Or we could }\DIFdelend \DIFaddbegin \DIFadd{; we could also }\DIFaddend consider non-maximal groups with disorder. While the number of potential examples to consider is \DIFdelbegin \DIFdel{unlimited}\DIFdelend \DIFaddbegin \DIFadd{large}\DIFaddend , they should all be analyzable using the ideas introduced herein. 
+We should be clear that the arguments in this paper are Mermin-Wagner or Imry-Ma arguments. 
+In principle, even when the Gaussian symmetry breaking fixed point is unstable to fluctuations, a non-trivial fixed point with long range order could arise (see e.g. \cite{TonerRadzihovsky}). Whether and when such non-trivial fixed points can be realized in models with multipolar symmetry is an important problem for future work. 
 
-We should be clear that the arguments in this paper are Mermin-Wagner or Imry-Ma arguments. These essentially amount to stability analyses about the Gaussian symmetry breaking fixed point. \DIFaddbegin \ethan{I don't really understand how these are ``stability'' arguments --- stability with respect to which perturbations? The free theories we wrote down are at least all stable in the RG sense (the core energies of any vortex configurations can be made arbitrarily large, which means that the Gaussian actions can describe the IR physics even when the fluctuations are strong enough to prevent the symmetries from being spontaneously broken). Maybe there's something with disorder that I'm missing?} \DIFaddend In principle, even when the Gaussian symmetry breaking fixed point is unstable, a non-trivial fixed point with long range order could arise (see e.g. \cite{TonerRadzihovsky}). Whether and when such non-trivial fixed points can be realized in models with multipolar symmetry is an important problem for future work. 
-
-We also emphasize that when the ordered phase does not exist, we did not provide any argument for what phase should replace it. For example, in 2 spatial dimensions there can be no ordered phases of continuous monopole (ordinary) symmetries. For $O(n)$ models with $n>2$, the result is that the disordered phase is the only phase \cite{polyakov}. For $n=2$, there can in addition be quasi-long-range-ordered phases. Determining what kind of phase {\it can} obtain in the absence of long range ordered symmetry breaking is beyond the scope of this work, and would at a minimum require understanding the nature and role of topological defects in the symmetry breaking order parameter, akin to vortices in the XY model. \DIFaddbegin \ethan{I think that since all the symmetries we are considering are Abelian, we can always have QLRO in the dimensions where the Gaussian action allows it (we can always work in a limit where the vortex core energy is infinitely large, meaning that we can always find a regime in which the description in terms of a phase mode is legitimate). The case of $O(n)$ models with $n>2$ is different because the sigma model for the putative broken phase is non-Abelian, with the stiffness flowing to zero. In the present Abelian case there is no such flow, and vortices are the only thing standing in the way of a Gaussian description. But as mentioned above, they can be gotten rid of (in any dimension) by making their core energies large.} \DIFaddend The range of possible symmetry unbroken phases could be even richer in the presence of disorder, where various glassy phases could also come into play \cite{Fisheretal}. Our discussion of disorder physics was also limited to quenched short-range correlated disorder. Extensions to disorder with long-range correlations, or annealed disorder, are left to future work.
+We also emphasize that when the ordered phase does not exist, we did not provide any argument for what phase should replace it. For example, in 2 spatial dimensions there can be no ordered phases of continuous monopole (ordinary) symmetries. For $O(n)$ models with $n>2$, the result is that the disordered phase is the only phase \cite{polyakov}. For $n=2$, there can in addition be quasi-long-range-ordered phases. Determining what kind of phase {\it can} be obtained in the absence of long range ordered symmetry breaking would at a minimum require understanding the nature and role of topological defects in the symmetry breaking order parameter, akin to vortices in the XY model. We expect that if we stick with an $O(2)$ internal group, then quasi-long range order should always be a possibility at the marginal spatial dimension, at least in the limit where the vortex core energy is infinitely large. The extension to non-Abelian internal groups is beyond the scope of this work. 
+The range of possible symmetry unbroken phases could also be even richer in the presence of disorder, where various glassy phases could also come into play \cite{Fisheretal}. Our discussion of disorder physics was also limited to quenched short-range correlated disorder. Extensions to disorder with long-range correlations, or annealed disorder, are left to future work.
 
 We should also emphasize that our discussion has utilized standard concepts from statistical physics, which in turn amounts to assuming ergodicity. However, quantum dynamics with multipolar symmetries can break ergodicity \cite{KHN, Sala}, in which case our analysis would not straightforwardly apply. It is however believed that the strict ergodicity breaking is limited to systems with strictly short range interactions (below some critical range) and that systems in which the interactions have long range tails (whether power law or exponential) should generically obey ergodicity at long times (although see \cite{NS}). Since long range tails are generic in physical systems, we believe our arguments should generically apply.  
 
@@ -756,47 +515,10 @@ Another setting for generalized Mermin-Wagner-type arguments is higher form glob
 Finally, there exists a body of work on generalized Mermin-Wagner arguments in systems with subsystem symmetries \cite{Batista2005, SeibergA, SeibergB, SeibergC, Gorantla2021, Distler2021}. Subsystem symmetries are rather different in character to the multipolar symmetries discussed herein, but are also related to fracton phases via duality \cite{VHF2}. There can be theories with subsystem symmetries where symmetry breaking cannot occur even above the critical dimension, due to the UV/IR mixing~\cite{Gorantla2021}. However, it is always possible to write down theories that saturate the generalized Mermin-Wagner bound~\cite{Distler2021}.
 Exploration of connections between the present work and the literature on subsystem symmetries would also be a fruitful topic for future work. 
 
-{\bf Acknowledgements} This work was supported by
-the U.S. Department of Energy, Office of Science, Basic
-Energy Sciences, under Award \# DE-SC0021346\DIFaddbegin \DIFadd{. EL was supported by the Hertz Fellowship. 
-}\DIFaddend 
+{\bf Acknowledgements} We thank Leo Radzihovsky for pointing out that Mermin-Wagner instability could mean flow to ordered but non-trivial fixed points. This work was supported by
+the U.S. Department of Energy, Office of Science, Basic Energy Sciences, under Award \# DE-SC0021346. E.L. was supported by a Hertz Fellowship. 
 
 \bibliography{big}
-
-
-\appendix
-
-\section{No mediated condensation} \label{app:mediated}
-\DIFaddbegin 
-
-\ethan{not sure if this appendix is necessary, given that the paper is about MW theorems?} 
-\DIFaddend 
-
-In Sec.~\ref{sec:partial} we saw that the generalized Mermin-Wagner argument provides critical dimensions for partial breaking that are lower than the critical dimensions for full symmetry breaking. \note{Can we use this behavior to try to evade the Mermin-Wagner argument for the full symmetry group?}
-
-%\remove{In fact, we can use this observation to evade the generalized Mermin-Wagner theorem, completely breaking any multipole symmetry for $d>2$ classically, or $d>1$ quantum mechanically}. This possibility has been pointed out in Refs.~\cite{Griffin2015Cascade, Griffin2015}, but we include a further interpretation in terms of what types of phase transitions are allowed in different dimensions. For simplicity, we will begin by considering the classical dipole-preserving theory with symmetry group $\mathcal{M}^2_\max$.
-
-To be explicit, consider a monopole field $\phi(x)$ and a dipole field $\varphi_i(x)$. Under the dipole symmetry they transform as 
-\begin{align}
-\phi(x) &\goesto \phi(x) + a_ix^i + b,\nn
-\varphi_i(x) &\goesto \varphi_i(x) + a_i.
-\end{align}
-The leading terms in the Lagrangian will be
-\begin{align}
-\mathcal{L} &= (\partial_t \phi)^2 + (\partial_t \varphi_i)^2 + (\partial_i \partial_j \phi)^2 + (\partial_i \varphi_j)^2,
-\end{align}
-so that $\phi$ has a $k^4$ dispersion and $\varphi_i$ has a $k^2$ dispersion. We can also include an interaction term of the form $g(\partial_i \phi - \varphi_i)^2$, which does not break the symmetry.  The $\varphi_i$ field is well-defined whenever the dipole symmetry is broken.
-
-\note{We can then redefine the $\varphi_i$ field to $\tilde{\varphi}_i = \varphi_i - \partial_i \phi$, so that it is neutral under the symmetry. The interaction term becomes $g\tilde{\varphi}_i^2$, so that the $\tilde{\varphi}_i$ field becomes massive. The only remaining massless field is $\phi$, which remains charged under the full dipole group and keeps its $k^4$ dispersion. As a result, the critical dimension for breaking the full dipole group is not affected by the possibility of partially breaking.
-}
-\charlie{What else to say here? Compare to Griffin/Grosvenor?}
-\todo{Compare to fracton superfluids}
-
-%As long as $\phi_i$ is well-defined, integrating out fluctuations in $\phi_i$ endows the monopole field $\phi$ with a $k^2$ dispersion. The coupling $g$ is set by how far the theory sits from the dipole critical point.
-
-%With a $k^2$ dispersion for the monopole field, we now have a route to evade the (generalized) Mermin-Wagner argument and fully break the dipole symmetry in dimensions $d> 2$. First, partially break the symmetry so that $\phi_i$ is well defined, which is allowed for any $d>2$. Then, we can use the effective dispersion of the $\phi$ field to break the remaining part of the symmetry, also in any $d>2$. This procedure can be generalized, so that any multipole symmetry can be fully broken in $d>2$, provided we have enough symmetry-breaking order parameters. The discussion also translates to the quantum setting, so that the ultimate critical (space) dimension is always $d=1$. 
-
-%The preceding procedure gives us insight into what the generalized Mermin-Wagner arguments were telling us. When we wrote down those arguments, we did not include the intermediate fields. Thus, the generalized Mermin-Wagner arguments tell us when a direct transition between two phases is or is not allowed. Consider again the dipole group $\mathcal{M}^2_\max$. The phase in which the symmetry is fully broken can exist in any dimension $d>2$ ($d>1$ for quantum systems), but there can only be direct phase transitions between this phase and the wholly symmetry unbroken phase in $d>4$ ($d>2$). In dimensions $2<d<4$ ($1<d<2$) the fully symmetry broken and the fully symmetry unbroken phase must be separated by an intermediate phase that breaks dipole but not monopole symmetry. 
 
 
 \end{document}
